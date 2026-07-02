@@ -198,23 +198,66 @@
             <div class="flex items-center gap-2">
                 
                 <a href="/contact"
-                class="inline-flex items-center justify-center font-body text-sm font-bold text-white btn-gradient px-6 py-2.5 rounded-xl">
+                class="hidden sm:inline-flex items-center justify-center font-body text-sm font-bold text-white btn-gradient px-6 py-2.5 rounded-xl">
                     Get Started
                 </a>
 
-                {{-- <a href="/admin_login"
-                class="inline-flex items-center gap-2 font-body text-sm font-bold text-white glass-card px-6 py-2.5 rounded-xl hover:bg-white/10">
-                    
-                    <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-base">account_circle</span>
-                    </span>
-
-                    Admin Dashboard
-                </a> --}}
+                <!-- Hamburger Button -->
+                <button id="mobileMenuToggle" class="md:hidden flex items-center justify-center text-on-surface-variant hover:text-white glass-card p-2.5 rounded-xl transition-all" aria-label="Toggle Mobile Menu">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
 
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+        <!-- Close overlay click area -->
+        <div class="absolute inset-0 cursor-pointer" id="mobileDrawerOverlay"></div>
+        
+        <!-- Drawer Panel -->
+        <div class="absolute inset-y-0 right-0 w-full max-w-xs glass-card border-l border-white/10 bg-[#080313]/95 flex flex-col p-6 shadow-2xl translate-x-full transition-transform duration-300 ease-out" id="mobileDrawerPanel">
+            <!-- Header inside drawer -->
+            <div class="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
+                <a href="/" class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-secondary to-accent flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-sm font-bold">hub</span>
+                    </span>
+                    <span class="font-display text-lg font-black text-white tracking-tight">
+                        AI-Solutions
+                    </span>
+                </a>
+                <button id="mobileDrawerClose" class="text-on-surface-variant hover:text-white glass-card p-2 rounded-lg transition-all" aria-label="Close Mobile Menu">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Drawer Links -->
+            <nav class="flex flex-col space-y-4 flex-1 overflow-y-auto no-scrollbar">
+                <a href="/services" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('services*') || request()->is('service-details*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Services</a>
+                <a href="/gallery" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('gallery*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Gallery</a>
+                <a href="/insights" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('insights*') || request()->is('insights1*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Insights</a>
+                <a href="/projects" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('projects*') || request()->is('projects1*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Projects</a>
+                <a href="/events" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('events*') || request()->is('event1*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Events</a>
+                <a href="/about" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('about*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">About</a>
+                <a href="/contact" class="font-body text-base font-semibold px-4 py-3 rounded-xl transition-all {{ request()->is('contact*') ? 'bg-gradient-to-r from-secondary/20 to-accent/10 border-l-4 border-accent text-white' : 'text-on-surface-variant hover:bg-white/5 hover:text-white' }}">Contact Us</a>
+            </nav>
+
+            <!-- Actions inside Drawer -->
+            <div class="pt-6 mt-6 border-t border-white/10 space-y-4">
+                <a href="/contact" class="flex items-center justify-center font-body text-sm font-bold text-white btn-gradient py-3 rounded-xl w-full">
+                    Get Started
+                </a>
+                <a href="/admin_login" class="flex items-center justify-center gap-2 font-body text-sm font-bold text-white glass-card py-3 rounded-xl hover:bg-white/10 w-full">
+                    <span class="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-xs">account_circle</span>
+                    </span>
+                    Admin Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content Slot -->
     <main class="min-h-screen pt-20">
@@ -426,6 +469,35 @@
                     });
             }
         });
+
+        // Mobile Drawer navigation controls
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mobileDrawerPanel = document.getElementById('mobileDrawerPanel');
+        const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+        const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+
+        function openDrawer() {
+            mobileDrawer.classList.remove('opacity-0', 'pointer-events-none');
+            mobileDrawer.classList.add('opacity-100', 'pointer-events-auto');
+            mobileDrawerPanel.classList.remove('translate-x-full');
+            mobileDrawerPanel.classList.add('translate-x-0');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.remove('opacity-100', 'pointer-events-auto');
+            mobileDrawer.classList.add('opacity-0', 'pointer-events-none');
+            mobileDrawerPanel.classList.remove('translate-x-0');
+            mobileDrawerPanel.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        if (mobileMenuToggle && mobileDrawer && mobileDrawerPanel) {
+            mobileMenuToggle.addEventListener('click', openDrawer);
+            if (mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeDrawer);
+            if (mobileDrawerOverlay) mobileDrawerOverlay.addEventListener('click', closeDrawer);
+        }
     </script>
 </body>
 </html>
