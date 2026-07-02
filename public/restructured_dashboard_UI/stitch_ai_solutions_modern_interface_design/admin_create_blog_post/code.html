@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Blog | Aether Dash</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#85145a",
+                    "error": "#ffb4ab",
+                    "primary-container": "#7c3aed",
+                    "on-primary": "#3f008e",
+                    "error-container": "#93000a",
+                    "tertiary": "#ffafd3",
+                    "on-primary-fixed": "#25005a",
+                    "surface-container-low": "#131b2e",
+                    "surface-tint": "#d2bbff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "inverse-surface": "#dae2fd",
+                    "inverse-on-surface": "#283044",
+                    "background": "#0b1326",
+                    "surface-container": "#171f33",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#dae2fd",
+                    "on-tertiary-container": "#ffdce9",
+                    "secondary-fixed": "#acedff",
+                    "surface-container-high": "#222a3d",
+                    "on-secondary-fixed": "#001f26",
+                    "primary-fixed-dim": "#d2bbff",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary": "#620040",
+                    "on-primary-container": "#ede0ff",
+                    "surface-bright": "#31394d",
+                    "on-error": "#690005",
+                    "outline-variant": "#4a4455",
+                    "surface-variant": "#2d3449",
+                    "surface": "#0b1326",
+                    "on-secondary-container": "#00424e",
+                    "tertiary-fixed-dim": "#ffafd3",
+                    "on-surface-variant": "#ccc3d8",
+                    "inverse-primary": "#732ee4",
+                    "secondary": "#4cd7f6",
+                    "on-tertiary-fixed": "#3d0026",
+                    "primary-fixed": "#eaddff",
+                    "primary": "#d2bbff",
+                    "on-secondary": "#003640",
+                    "tertiary-fixed": "#ffd8e7",
+                    "on-surface": "#dae2fd",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-dim": "#0b1326",
+                    "outline": "#958da1",
+                    "surface-container-highest": "#2d3449",
+                    "tertiary-container": "#ae397b",
+                    "secondary-container": "#03b5d3",
+                    "on-primary-fixed-variant": "#5a00c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "body-base": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-lg-mobile": ["Geist"],
+                    "display-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #4cd7f6 100%);
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl z-50 flex py-base">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Aether AI</h1>
+<p class="text-on-surface-variant text-xs opacity-70">Enterprise Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span>Inquiries</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">article</span>
+<span>Blogs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">folder_copy</span>
+<span>Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">photo_library</span>
+<span>Gallery</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span>Feedback</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span>Health</span>
+</a>
+</nav>
+<div class="px-4 py-6 border-t border-white/5 space-y-1">
+<button class="w-full mb-4 py-3 px-4 rounded-xl btn-gradient text-white font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Analysis
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-40 bg-surface/40 backdrop-blur-2xl border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-4 flex-1">
+<h2 class="font-headline-md text-headline-md font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary hidden lg:block">Aether Dash</h2>
+<div class="relative w-full max-w-md ml-8 focus-within:ring-2 focus-within:ring-primary/50 rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-lowest border-none pl-10 pr-4 py-2 rounded-lg text-sm focus:ring-0" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200">dark_mode</button>
+<div class="w-px h-6 bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-label-mono font-bold">Admin</p>
+<p class="text-[10px] text-on-surface-variant">System Master</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border border-primary/20 object-cover" data-alt="A professional close-up portrait of a tech-savvy administrator in a dark, high-tech control room environment. Soft blue and violet ambient lighting glows in the background, highlighting sleek equipment and translucent screens. The subject wears a clean, modern aesthetic with sharp focus and cinematic depth of field, reflecting a mood of professional mastery and sophisticated intelligence consistent with a dark-mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjskW92ZOhxbG1dVHLscVSdly_kSyhMMHQqLm-g1UvmcAA2OJubW1WJ4g8T9zboYOWAmBoMr2HfbzqO4of3aMwkU94sacrUxMgSxZTDwc_Ng2gBFeeFOoKEcXEtkoLuqNAkX6RvtkzIxgAWQz4cLelKK-YB8KJZbUIYbNwaoOord1LVs_4VdUFn1SFLiCyCLuKeeUEEPNyfUVaoP1lWUjXMYS1LHTJ98fgU0HaC03NioGJm47NC0UAUOmw-f_fUW_LoXpDphON9Qd2"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 pt-24 pb-20 px-gutter max-w-7xl mx-auto">
+<form class="space-y-8" id="blogForm">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<nav class="flex items-center gap-2 text-xs font-label-mono text-on-surface-variant mb-2">
+<span>ADMIN</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span>BLOGS</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary">CREATE NEW</span>
+</nav>
+<h1 class="font-headline-md text-headline-md text-on-surface">Publish Intelligence</h1>
+<p class="text-on-surface-variant mt-1">Draft a new technical article or insights post for the Aether AI network.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-xl bg-surface-container-high text-on-surface font-semibold hover:bg-surface-bright transition-all active:scale-95" type="button">Save Draft</button>
+<button class="px-8 py-3 rounded-xl btn-gradient text-white font-bold transition-all active:scale-95 flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                        Publish Article
+                    </button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Core Editor -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Section: General Information -->
+<section class="glass-card p-6 rounded-2xl">
+<header class="text-lg font-bold text-primary border-b border-outline pb-2 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">edit_note</span>
+                            Core Details
+                        </header>
+<div class="space-y-6">
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Blog Title</label>
+<input class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm outline-none" placeholder="e.g., The Future of Quantum Neural Networks" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Author</label>
+<input class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none" type="text" value="Administrator"/>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Status</label>
+<select class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none appearance-none">
+<option value="draft">Draft (Private)</option>
+<option value="published">Published (Public)</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Categories (comma-separated)</label>
+<input class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none" placeholder="AI, Machine Learning, Futurology" type="text"/>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Tags (comma-separated)</label>
+<input class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none" placeholder="quantum, research, update" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Short Summary</label>
+<textarea class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none resize-none" placeholder="A brief hook to engage readers on the list view..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Section: Content Editor -->
+<section class="glass-card p-6 rounded-2xl">
+<header class="text-lg font-bold text-primary border-b border-outline pb-2 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                            Main Content
+                        </header>
+<div class="bg-surface-container-lowest border border-outline rounded-xl min-h-[500px] flex flex-col overflow-hidden">
+<div class="border-b border-outline bg-surface-container p-2 flex flex-wrap gap-2">
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">format_bold</button>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">format_italic</button>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">format_underlined</button>
+<div class="w-px h-6 bg-outline mx-1"></div>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">format_list_bulleted</button>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">format_list_numbered</button>
+<div class="w-px h-6 bg-outline mx-1"></div>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">link</button>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">image</button>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">code</button>
+<div class="flex-1"></div>
+<button class="p-2 hover:bg-surface-bright rounded material-symbols-outlined text-sm" type="button">fullscreen</button>
+</div>
+<div class="flex-1 p-6 text-on-surface-variant focus:outline-none leading-relaxed font-body-base" contenteditable="true">
+<p class="mb-4">Start typing your intelligence briefing here...</p>
+</div>
+</div>
+</section>
+<!-- Section: Callout Box (Repeater) -->
+<section class="glass-card p-6 rounded-2xl">
+<header class="text-lg font-bold text-primary border-b border-outline pb-2 mb-6 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">info</span>
+                                Key Callouts
+                            </div>
+<button class="text-xs font-label-mono bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20 hover:bg-primary/20 transition-all" onclick="addCallout()" type="button">
+                                + ADD NEW
+                            </button>
+</header>
+<div class="space-y-4" id="callout-container">
+<!-- Template Item -->
+<div class="flex gap-4 items-start bg-surface-container-highest/30 p-4 rounded-xl border border-white/5">
+<div class="flex-1 space-y-4">
+<input class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-2 text-on-surface focus:border-primary transition-all text-xs outline-none" placeholder="Key Highlight (e.g. ROI Estimate)" type="text"/>
+<textarea class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-2 text-on-surface focus:border-primary transition-all text-xs outline-none resize-none" placeholder="Description or value..."></textarea>
+</div>
+<button class="p-2 text-error/50 hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Settings -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Section: Header Image -->
+<section class="glass-card p-6 rounded-2xl">
+<header class="text-lg font-bold text-primary border-b border-outline pb-2 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">image</span>
+                            Main Header Image
+                        </header>
+<div class="space-y-4">
+<div class="relative aspect-video rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant flex flex-col items-center justify-center overflow-hidden group" id="image-preview-container">
+<img alt="Preview" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A futuristic digital landscape showing flowing lines of code and neural networks in a dark obsidian-colored world. Cinematic lighting with vibrant cyan and violet glows creates a sense of deep technological space and high-end artificial intelligence research. The style is sleek, minimal, and highly professional, fitting perfectly into a premium admin dashboard aesthetic." id="header-preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwsK25JPFl0Ri-B3IwGduTbRR8RxngRh7aD07P9o7wHfpkTjcLEKPknHKGbejagPjxtBACrAT0vBmUUq-OV6IoSsHnme1ypuViWkaIzHd2-3_kWFLMAcHt8ygjiNv1UL7TdQPklpdJFr-eY8hgBFr36i4eTivU1njHj3T-KDnZNMZFdlmddGYjwzeHVKVua3idDCK2LsOwb6SGKZiFaznumHtKFVR70XuMN2nV1MX2WybqkmNsCKWH2_zY9ht4rF73VtK6NveRRHzv"/>
+<div class="relative z-10 text-center p-4">
+<span class="material-symbols-outlined text-4xl text-primary-container mb-2">cloud_upload</span>
+<p class="text-xs text-on-surface-variant">Drag and drop or click to replace</p>
+<p class="text-[10px] text-outline mt-1 uppercase font-label-mono">1200 x 630 px recommended</p>
+</div>
+<input class="absolute inset-0 opacity-0 cursor-pointer" onchange="previewImage(this)" type="file"/>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                                This image will be used for social media previews and as the main banner of the article. Ensure high contrast for readability.
+                            </p>
+</div>
+</section>
+<!-- Section: SEO & Optimization -->
+<section class="glass-card p-6 rounded-2xl">
+<header class="text-lg font-bold text-primary border-b border-outline pb-2 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">query_stats</span>
+                            SEO Engine
+                        </header>
+<div class="space-y-4">
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Custom URL Slug</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-outline bg-surface-container text-outline text-[10px] font-label-mono">aether.ai/blog/</span>
+<input class="flex-1 bg-surface-container-low border border-outline rounded-r-lg px-4 py-2 text-on-surface focus:border-primary transition-all text-xs outline-none" placeholder="neural-optimization" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant uppercase mb-2">Meta Description</label>
+<textarea class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-3 text-on-surface focus:border-primary transition-all text-sm outline-none resize-none" placeholder="Briefly describe the content for search engines..." rows="4"></textarea>
+</div>
+<div class="bg-primary/5 rounded-xl p-4 border border-primary/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+<span class="text-[10px] font-bold text-primary uppercase">AI Optimization</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                                    Our engine suggests adding <span class="text-secondary font-bold">"Machine Learning"</span> to your keywords to increase reach by ~24% this week.
+                                </p>
+</div>
+</div>
+</section>
+<!-- Section: Preview Card -->
+<section class="glass-card overflow-hidden rounded-2xl">
+<div class="bg-surface-container-highest p-4 border-b border-white/5">
+<h4 class="text-xs font-label-mono text-on-surface-variant uppercase">Search Preview</h4>
+</div>
+<div class="p-6 space-y-2">
+<p class="text-secondary text-sm font-semibold truncate">Aether AI | The Future of Quantum Neural Networks</p>
+<p class="text-on-surface-variant text-xs line-clamp-2">A brief hook to engage readers on the list view... our research into quantum systems suggests a massive paradigm shift in how we handle data.</p>
+</div>
+</section>
+</div>
+</div>
+</form>
+</main>
+<script>
+        // Micro-interactions and Repeater Logic
+        function addCallout() {
+            const container = document.getElementById('callout-container');
+            const newCallout = document.createElement('div');
+            newCallout.className = 'flex gap-4 items-start bg-surface-container-highest/30 p-4 rounded-xl border border-white/5 opacity-0 transition-all duration-300 translate-y-2';
+            newCallout.innerHTML = `
+                <div class="flex-1 space-y-4">
+                    <input type="text" placeholder="Key Highlight" class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-2 text-on-surface focus:border-primary transition-all text-xs outline-none">
+                    <textarea placeholder="Description..." class="w-full bg-surface-container-low border border-outline rounded-lg px-4 py-2 text-on-surface focus:border-primary transition-all text-xs outline-none resize-none"></textarea>
+                </div>
+                <button type="button" onclick="this.parentElement.remove()" class="p-2 text-error/50 hover:text-error transition-colors">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            `;
+            container.appendChild(newCallout);
+            setTimeout(() => {
+                newCallout.classList.remove('opacity-0', 'translate-y-2');
+            }, 10);
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('header-preview').src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Form Submission Glow Effect
+        document.getElementById('blogForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Processing...';
+            setTimeout(() => {
+                alert('Blog post published successfully to Aether AI!');
+                btn.innerHTML = '<span class="material-symbols-outlined text-sm">rocket_launch</span> Publish Article';
+            }, 1500);
+        });
+    </script>
+</body></html>

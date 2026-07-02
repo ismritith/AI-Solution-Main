@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI-Solutions | Insights &amp; Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(210, 187, 255, 0.4);
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #4cd7f6 100%);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#dae2fd",
+                    "tertiary": "#ffafd3",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-bright": "#31394d",
+                    "on-secondary": "#003640",
+                    "surface-variant": "#2d3449",
+                    "tertiary-container": "#ae397b",
+                    "surface-container-highest": "#2d3449",
+                    "on-surface": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "outline-variant": "#4a4455",
+                    "tertiary-fixed": "#ffd8e7",
+                    "background": "#0b1326",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#3f008e",
+                    "tertiary-fixed-dim": "#ffafd3",
+                    "on-tertiary": "#620040",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-dim": "#0b1326",
+                    "surface-container-high": "#222a3d",
+                    "surface": "#0b1326",
+                    "on-primary-container": "#ede0ff",
+                    "on-tertiary-container": "#ffdce9",
+                    "secondary-fixed": "#acedff",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-fixed-variant": "#85145a",
+                    "surface-container-lowest": "#060e20",
+                    "on-secondary-container": "#00424e",
+                    "secondary": "#4cd7f6",
+                    "outline": "#958da1",
+                    "on-surface-variant": "#ccc3d8",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#eaddff",
+                    "primary": "#d2bbff",
+                    "on-tertiary-fixed": "#3d0026",
+                    "inverse-primary": "#732ee4",
+                    "surface-tint": "#d2bbff",
+                    "primary-container": "#7c3aed",
+                    "on-primary-fixed": "#25005a",
+                    "on-secondary-fixed": "#001f26",
+                    "secondary-container": "#03b5d3",
+                    "inverse-surface": "#dae2fd",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#d2bbff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "section-gap": "120px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-base": ["Inter"],
+                    "headline-md": ["Geist"],
+                    "display-lg-mobile": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">
+                AI-Solutions
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Gallery</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-base text-body-base" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 rounded-lg border border-primary text-primary font-body-base text-body-base hover:bg-primary/10 transition-all active:scale-95">Book Now</button>
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-body-base text-body-base font-semibold shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[614px] flex items-end pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-contrast shot of a winding mountain road disappearing into a dense, foggy forest at twilight. The scene is illuminated by cool blue and purple ambient light, evoking a mysterious yet technologically advanced atmosphere. In the distance, faint glowing data streams are subtly integrated into the landscape, reflecting the AI-Solutions brand colors of deep violet and cyan. The lighting is cinematic and moody with a hyper-modern feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgtfp7qzjPlXwz8tqLfNmVEm3TyWsztQZ-9S7lgURP_W9_SWfvcYHW22fxCcEwxPe1bZTeTIeYBNFqiisIGmZyRxjE-COOaHqMpFjQd51a4AiZmHKK8gGqbOdzvWlLYCajK953zGYXgL0QbeyQCNMBna1hI6IAW05lw9p60leY5q4wqTz_Q5VF6_OS-GpZgM3PNi6M0XUOmURgPelEapR-fqB8fFt_AvwgWVe8D8rz9neM6nGXITiN6IlM3FZh9bb3bKh9dmfGwbHK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter pb-16 w-full">
+<div class="flex flex-col gap-4 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 glass-card rounded-full text-label-mono font-label-mono text-secondary uppercase tracking-widest">Neural Architecture</span>
+<span class="text-on-surface-variant font-label-mono text-label-mono">• 8 min read</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight font-bold tracking-tighter">
+                    NEURAL PATHWAYS: BEYOND THE <span class="text-secondary italic">CLOUD EDGE</span>
+</h1>
+<div class="flex items-center gap-4 mt-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech expert with a neutral expression. The lighting is crisp and cool, featuring a subtle purple rim light that aligns with the AI-Solutions color palette. The background is a soft-focus dark interior with hints of glowing server racks, suggesting a high-tech lab environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI1D4THepEvmQ7xyAL1-8ZjOu6sS_HO6gXdVM0RQiG1NFs2oaGa1e41LQ5_9GofQZRnFmkkigHCu8n-5n4G-3QMJIMcgac5W0OOX9BzIr-6S2SQpqG0EtUAVXs81fzZJki506WRMJw3e7k4AWJsfYdQuqFNQPFjjhENC34COngMp96FM0sGl5BWOac2TpsNSJLlsSFMV0u5kfFf07big-1tB9LY2demB1jeQIYQAYyvbb3BTDyeQmEZTX22Jh1AgZYteNa1fSAShBK"/>
+</div>
+<div>
+<p class="text-on-surface font-semibold font-body-base text-body-base">Dr. Julian Vane</p>
+<p class="text-on-surface-variant font-label-mono text-label-mono uppercase">Lead AI Architect • Oct 24, 2024</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Section -->
+<main class="max-w-container-max mx-auto px-gutter py-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Article Body -->
+<article class="lg:col-span-8 space-y-12">
+<div class="space-y-6">
+<p class="text-body-base font-body-base text-on-surface-variant leading-relaxed text-xl">
+                    As we approach the horizon of true autonomous intelligence, the traditional paradigms of cloud computing are being rewritten. The "Thin Air" metaphor refers to the invisible, pervasive nature of the next generation of neural networks—processing that occurs at the speed of thought, distributed across a global mesh of edge nodes.
+                </p>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-12 mb-4">The Convergence of Edge and Intelligence</h2>
+<p class="text-body-base font-body-base text-on-surface-variant leading-relaxed">
+                    Historically, AI was a centralized titan. Massive data centers hummed with the effort of processing queries that traveled thousands of miles. This latency, while once acceptable, is the friction we are now eliminating. The integration of local processing with global model synchronization allows for a seamless experience that feels less like a tool and more like an extension of human intent.
+                </p>
+<!-- Quote -->
+<blockquote class="relative py-8 px-10 border-l-4 border-primary glass-card my-12 rounded-r-xl">
+<span class="material-symbols-outlined absolute -top-4 -left-4 text-6xl text-primary/20" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="font-headline-md text-2xl italic text-on-surface leading-snug">
+                        "Intelligence is no longer a destination we visit; it is the atmosphere in which we build our future."
+                    </p>
+<cite class="block mt-4 text-label-mono font-label-mono text-secondary uppercase tracking-widest">— Sarah Chen, CTO AI-Solutions</cite>
+</blockquote>
+<p class="text-body-base font-body-base text-on-surface-variant leading-relaxed">
+                    By decentralizing the weights and biases of our primary models, we've achieved a 400% reduction in response latency for real-world robotics applications. This isn't just about speed; it's about reliability in mission-critical environments where every millisecond determines the outcome of a complex physical operation.
+                </p>
+<!-- Code Highlight -->
+<div class="glass-card rounded-xl overflow-hidden my-12">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex items-center justify-between">
+<span class="text-label-mono font-label-mono text-on-surface-variant">edge_mesh_synapse.py</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+</div>
+</div>
+<pre class="p-6 font-label-mono text-sm overflow-x-auto text-primary-fixed-dim"><code><span class="text-secondary">import</span> synapse_mesh <span class="text-secondary">as</span> sm
+
+<span class="text-tertiary"># Initialize the global edge coordinator</span>
+coordinator = sm.GlobalCoordinator(
+    protocol=<span class="text-secondary">"quantum_secure"</span>,
+    latency_threshold=<span class="text-primary">15.0</span>
+)
+
+<span class="text-secondary">async def</span> deploy_intelligence(node_id):
+    <span class="text-secondary">try</span>:
+        synapse = <span class="text-secondary">await</span> coordinator.connect(node_id)
+        synapse.propagate_weights(mode=<span class="text-secondary">"dynamic_asymmetric"</span>)
+        <span class="text-secondary">return</span> synapse.status()
+    <span class="text-secondary">except</span> LatencyError <span class="text-secondary">as</span> e:
+        <span class="text-tertiary-fixed-dim"># Fallback to local mesh</span>
+        <span class="text-secondary">return</span> sm.LocalBuffer.resolve(e)</code></pre>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-12 mb-4">Security in the Transparent Era</h2>
+<p class="text-body-base font-body-base text-on-surface-variant leading-relaxed">
+                    One of the primary concerns with distributed intelligence is the integrity of the data stream. Our solution utilizes zero-knowledge proofs at every node handshake, ensuring that while the intelligence is global, the privacy remains absolute.
+                </p>
+</div>
+<!-- Social Sharing -->
+<div class="pt-12 border-t border-outline-variant flex flex-wrap gap-4 items-center">
+<span class="text-on-surface-variant font-label-mono text-label-mono uppercase mr-2">Share this Insight:</span>
+<button class="flex items-center gap-2 px-4 py-2 glass-card rounded-lg hover:text-primary transition-all group">
+<span class="material-symbols-outlined text-lg">share</span>
+<span class="font-body-base text-sm">X (Twitter)</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 glass-card rounded-lg hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">link</span>
+<span class="font-body-base text-sm">LinkedIn</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 glass-card rounded-lg hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+<span class="font-body-base text-sm">Copy Link</span>
+</button>
+</div>
+</article>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-12">
+<!-- CTA Card -->
+<div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-32 h-32 accent-gradient rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<h3 class="font-headline-md text-2xl text-on-surface mb-4">Ready to Evolve?</h3>
+<p class="text-on-surface-variant font-body-base text-body-base mb-6">Experience the future of automated intelligence with our custom AI frameworks.</p>
+<button class="w-full py-4 rounded-xl accent-gradient text-on-primary font-bold shadow-lg hover:shadow-primary/40 transition-all flex items-center justify-center gap-2">
+                    Book a Strategy Call
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Categories -->
+<div class="space-y-6">
+<h4 class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant px-2">Insights Categories</h4>
+<div class="space-y-3">
+<a class="flex items-center justify-between p-4 glass-card rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="font-body-base text-on-surface">Neural Engineering</span>
+<span class="text-label-mono text-primary bg-primary/10 px-2 py-0.5 rounded">12</span>
+</a>
+<a class="flex items-center justify-between p-4 glass-card rounded-xl hover:bg-white/5 transition-all border-l-2 border-primary" href="#">
+<span class="font-body-base text-primary font-semibold">Cloud Integration</span>
+<span class="text-label-mono text-primary bg-primary/20 px-2 py-0.5 rounded">08</span>
+</a>
+<a class="flex items-center justify-between p-4 glass-card rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="font-body-base text-on-surface">Ethics &amp; Privacy</span>
+<span class="text-label-mono text-primary bg-primary/10 px-2 py-0.5 rounded">05</span>
+</a>
+</div>
+</div>
+<!-- Related Posts -->
+<div class="space-y-6">
+<h4 class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant px-2">Recent Intelligence</h4>
+<div class="space-y-6">
+<div class="group cursor-pointer">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a highly detailed mechanical eye with glowing azure iris sensors. The surrounding metal casing is matte black with subtle orange status indicators. The lighting is low and dramatic, highlighting the intricate engineering and digital sensors of the robotic components. The overall aesthetic is clean, technical, and slightly futuristic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwFAfjfIVKsVf56u8CVMsd_N43Q4SzE3fm8-6ve6Yp6ECWWo0F4UkObkEINR1VpwhMNzQretJd5ZVfU0bYPf9JG5EXfgQ1944J6qqeXJFs0vddHLj3CeMMrikRHjqfMZJvSMyVtYqrW9qnxTtS7EwvpJnB8o9amLBzLP_44BMfzF2YsYQ7W7iIhpekiQZFHHluzOXL9ojhWQe0kLUEknNZETMRqUXYEQ-4DsyM11p_RqDi4C6kmfR0JPVvs5h-SiEDzQuA_kgrOdc0"/>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="text-on-surface font-semibold font-body-base group-hover:text-primary transition-colors leading-tight mb-1">Quantum-Safe Encryption Protocols</h5>
+<p class="text-label-mono text-on-surface-variant uppercase text-[10px]">Cybersecurity • 5 min read</p>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A wide-angle satellite-style view of a digital globe glowing with interconnected data points and fiber optic strands. Vibrant streaks of neon blue and violet represent global communication networks against the deep black of space. The lighting is soft yet brilliant, creating a sense of a living, breathing digital planet. The aesthetic is epic and technologically sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFSrHGLl5gxPnXB3r9Kbbk0IYRKeWujZ35LMyuzXAyGwDuGVY8WMigFBfZCNejdincER2ataNd21uJPlDA7qYuhiqwCet9o9aT3V1-FTzzLv6LQE4xE9hCfSEOVprG_sy71dKQevnxtO6UFPtPzCcmV7UGIJsBzINCPcUMAKrE096rvqHNk8w_OV62p1IgXSFh8z0eS9CdtpUlUiRPcpTwiWJJOu8tYyHB7TvqCB8QDWI-QuSfWHnC-TcpG_dr_2aM3h4k2JVzaUcT"/>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="text-on-surface font-semibold font-body-base group-hover:text-primary transition-colors leading-tight mb-1">Visualizing the Global Mesh</h5>
+<p class="text-label-mono text-on-surface-variant uppercase text-[10px]">Architecture • 12 min read</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Newsletter Sidebar -->
+<div class="bg-surface-container-high p-8 rounded-2xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">alternate_email</span>
+<h4 class="font-headline-md text-xl text-on-surface mb-2">Weekly Intelligence</h4>
+<p class="text-on-surface-variant text-sm mb-6">Stay updated with the latest in AI architecture and automated solutions.</p>
+<div class="relative">
+<input class="w-full bg-surface py-3 px-4 rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none text-on-surface font-body-base text-sm transition-all" placeholder="email@example.ai" type="email"/>
+<button class="absolute right-2 top-2 p-1 text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest border-t border-outline-variant py-section-gap">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+<!-- Brand Column -->
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md font-black text-on-surface">AI-Solutions</div>
+<p class="text-on-surface-variant font-body-base text-body-base">Empowering the future through advanced intelligence and seamless automation since 2024.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+<a class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">mail</span>
+</a>
+</div>
+</div>
+<!-- Links 1 -->
+<div class="space-y-6">
+<h5 class="text-tertiary font-label-mono text-label-mono uppercase tracking-widest font-bold">Solutions</h5>
+<ul class="space-y-4 font-body-base text-body-base">
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Neural Mesh</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Automation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Edge Nodes</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Quantum Ops</a></li>
+</ul>
+</div>
+<!-- Links 2 -->
+<div class="space-y-6">
+<h5 class="text-tertiary font-label-mono text-label-mono uppercase tracking-widest font-bold">Resources</h5>
+<ul class="space-y-4 font-body-base text-body-base">
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">API Documentation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Insights Blog</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Whitepapers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Support</a></li>
+</ul>
+</div>
+<!-- Links 3 -->
+<div class="space-y-6">
+<h5 class="text-tertiary font-label-mono text-label-mono uppercase tracking-widest font-bold">Company</h5>
+<ul class="space-y-4 font-body-base text-body-base">
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant font-label-mono text-label-mono">© 2024 AI-Solutions. Empowering the future through advanced intelligence.</p>
+<div class="flex items-center gap-6">
+<span class="text-on-surface-variant text-label-mono">All Systems Operational</span>
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

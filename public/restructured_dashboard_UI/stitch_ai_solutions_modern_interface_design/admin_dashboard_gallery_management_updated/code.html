@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether AI | Gallery Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+        .accent-glow {
+            background: radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+        }
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #4cd7f6 100%);
+        }
+        .primary-gradient-btn:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#4cd7f6",
+                    "tertiary-fixed-dim": "#ffafd3",
+                    "on-background": "#dae2fd",
+                    "tertiary-fixed": "#ffd8e7",
+                    "outline-variant": "#4a4455",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#eaddff",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffdce9",
+                    "surface-variant": "#2d3449",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#d2bbff",
+                    "surface-tint": "#d2bbff",
+                    "inverse-surface": "#dae2fd",
+                    "background": "#0b1326",
+                    "outline": "#958da1",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary-fixed-variant": "#85145a",
+                    "on-surface": "#dae2fd",
+                    "on-primary-container": "#ede0ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary-container": "#ae397b",
+                    "on-secondary": "#003640",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#7c3aed",
+                    "surface-container-highest": "#2d3449",
+                    "surface": "#0b1326",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#3d0026",
+                    "primary": "#d2bbff",
+                    "on-secondary-container": "#00424e",
+                    "on-tertiary": "#620040",
+                    "on-surface-variant": "#ccc3d8",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "inverse-primary": "#732ee4",
+                    "tertiary": "#ffafd3",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#283044",
+                    "surface-bright": "#31394d",
+                    "surface-container-lowest": "#060e20",
+                    "surface-container-high": "#222a3d",
+                    "secondary-container": "#03b5d3",
+                    "surface-container": "#171f33",
+                    "on-primary-fixed": "#25005a",
+                    "on-primary": "#3f008e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "section-gap": "120px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "body-base": ["Inter"],
+                    "display-lg-mobile": ["Geist"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-body-base text-body-base">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col h-full py-base fixed left-0 w-64 bg-surface-container border-r border-white/10 z-50">
+<div class="px-6 py-8">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Aether AI</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mt-1">Admin Console</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3">event</span>
+<span class="font-label-mono text-label-mono">Events</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">calendar_today</span>
+<span class="font-label-mono text-label-mono">Schedule</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">engineering</span>
+<span class="font-label-mono text-label-mono">Speakers</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/5 space-y-1">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="font-label-mono text-label-mono">Help</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-error transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="font-label-mono text-label-mono">Logout</span>
+</a>
+</div>
+</aside>
+<main class="lg:ml-64 min-h-screen">
+<!-- Header -->
+<header class="fixed top-0 right-0 left-0 lg:left-64 bg-surface/50 backdrop-blur-xl z-40 border-b border-white/10">
+<div class="px-gutter py-4 flex justify-between items-center max-w-container-max mx-auto">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Gallery Assets</h2>
+<div class="flex items-center gap-4">
+<button class="primary-gradient-btn px-6 py-2 rounded-full font-label-mono text-label-mono text-on-primary-fixed font-bold transition-all flex items-center gap-2" onclick="toggleModal('createModal')">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                        Create New
+                    </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior AI engineer wearing minimalist glasses and a dark tech-style hoodie. The lighting is dramatic and cinematic, with a soft blue rim light that matches the high-tech AI-Solutions aesthetic. The background is a blurred server room with subtle violet and cyan light trails, emphasizing a professional and advanced technological atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsqJhm5gRe6LgHPreq8prOX-6evwhFCovQUe_RClYrS6PNgjBUKghBEZ2C35cBluLxBHx9otjV0IMdARSclkEp76tpmXIvrfzgaOrjE-lM2tb6k0ckpJoGNfouFARbX3vem_IuNscWNUKr7YD-tppMYHK0snjfcdGFFBuSdijc3DnK9cmVlPg8fRYr-ABGIDB5zoek8X8wz46V3GD4TD8X7gJjIHfNTjo8M12ygJVONf4yTGhlAjE-etRkipBBqtlhhsEc_iwFyYP0"/>
+</div>
+</div>
+</div>
+</header>
+<div class="pt-24 px-gutter pb-section-gap max-w-container-max mx-auto">
+<!-- Filters & Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="glass-card p-6 rounded-xl flex flex-col justify-between overflow-hidden">
+<div class="accent-glow absolute inset-0 -z-10"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Total Assets</span>
+<span class="font-headline-md text-headline-md mt-2">1,284</span>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col justify-between overflow-hidden">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Featured</span>
+<span class="font-headline-md text-headline-md mt-2 text-secondary">42</span>
+</div>
+<div class="md:col-span-2 glass-card p-6 rounded-xl flex items-center gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-white/10 rounded-lg pl-10 focus:border-primary focus:ring-1 focus:ring-primary text-body-base" placeholder="Search gallery assets..." type="text"/>
+</div>
+<button class="bg-surface-bright p-2 rounded-lg border border-white/10 text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Index -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Item 1: Image -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-resolution digital artwork representing a neural network in a deep navy 3D space. Interconnected nodes glow with a vibrant cyan light, and thin violet data filaments pulse with energy. The composition is sleek and professional, utilizing glassmorphism effects for floating UI elements that display computational metrics. The mood is sophisticated and futuristic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjgkHb4Mtz8YJrx3zPSDJNchKB_ceEeS2e_K8x9Qe0NF_SxLqIj3uGSkcS_u8ZxeBC1d_0SB_dNuB4JlgJB19cfRxBCW_LpINVINswa4WxWBqE86AExMK8cGXbjlj12T73fILFMEpoUiTRFRdJ4EsMK-CsGAKy_Ps4-emTS4u7C8m7mi2CMOa6amyLprptjtFQPbYS1DfDlySixF1YEvkp00TB_FShTgzkwBCY1Gm0y4SOQh6quJydXEmKetB6kYjRiwyHAR-p3C6z"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded-full uppercase">Featured</span>
+<span class="bg-surface/60 backdrop-blur-md border border-white/10 text-on-surface font-label-mono text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">image</span>
+                                Image
+                            </span>
+</div>
+</div>
+<div class="p-5">
+<p class="font-label-mono text-[10px] text-secondary uppercase mb-1">Projects</p>
+<h3 class="font-bold text-lg mb-4 text-on-surface">Neural Core Visuals</h3>
+<div class="flex justify-between items-center border-t border-white/5 pt-4">
+<div class="flex gap-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">AI</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">Core</span>
+</div>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Video -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic capture of a high-tech cybersecurity command center. Large transparent glass screens display intricate map overlays and streaming lines of green and white code. The lighting is low-key, dominated by the cool glow of the monitors. The visual style is sharp and modern, emphasizing precision and secure technology in a professional environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfuTVxFWWKoV0v3_7CPh8KeEwJ-GlEKn0XhPtmL804FBUTB3etX0jUWW_nwIWHwA23beTCaqlIGXzXgLQ3Z0hi2XLhm_qgZWRJZYMSbu27ApNnDvakXajlg5yJlXC_HURNl3xnaF-u0zI9xTS-l1D1VSwqg-YnfWvQaNNfZofYC22OmG_JofmnAGZGz_6lvgK25OK2XgXpW9U74TpyNykeF86Hlpf8Sm1Cqi5zz9IiM0q49YMiwKw-pnfYA7OECCVFX6fHMUVorulU"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+<span class="material-symbols-outlined text-white text-5xl opacity-80" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md border border-white/10 text-on-surface font-label-mono text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">videocam</span>
+                                Video
+                            </span>
+</div>
+</div>
+<div class="p-5">
+<p class="font-label-mono text-[10px] text-tertiary uppercase mb-1">Office Life</p>
+<h3 class="font-bold text-lg mb-4 text-on-surface">Cyber HQ Tour</h3>
+<div class="flex justify-between items-center border-t border-white/5 pt-4">
+<div class="flex gap-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">Security</span>
+</div>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional conference setting with a large stage featuring a minimalist digital backdrop with the text Aether AI Summit. The room is filled with attendees in silhouette, lit by soft violet and blue stage lights. The atmosphere is energetic and professional, capturing a high-end corporate event dedicated to artificial intelligence. Sharp focus on the stage with a beautiful bokeh effect in the foreground." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANS4FZV3ekSIaVk5kaT6LIL6Bm5G37TIKiPvM8F89_85k-bEjuslhu43ck6eKjUIEIf_u4OK9HbDSXB_a6UikhddQ1wGqWCCVCrgP5Cqa4DufBWod8zJgt5O0tMYSgnk_xJa2uFY273FKLCep7V-X5nSoFnPVh998W553oDZiLUZGDYsG85RaRN4Gc4JyoO5K_iaj_15EF4FHdA3uOdWJVv4qsZ6FeDV7HlJag88teB-kR8A_KLNf7EAS0kwah_DLtOI0juZCNCKmD"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md border border-white/10 text-on-surface font-label-mono text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">image</span>
+                                Image
+                            </span>
+</div>
+</div>
+<div class="p-5">
+<p class="font-label-mono text-[10px] text-primary uppercase mb-1">Events</p>
+<h3 class="font-bold text-lg mb-4 text-on-surface">AI Summit 2026 Keynote</h3>
+<div class="flex justify-between items-center border-t border-white/5 pt-4">
+<div class="flex gap-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">Summit</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">Live</span>
+</div>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, minimalist close-up of high-performance robotic components. Brushed aluminum and dark matte composite materials are visible, with internal components emitting a soft cyan glow. The image is captured with macro photography, showing incredible detail and a shallow depth of field. The aesthetic is purely industrial yet high-tech, fitting for an advanced robotics lab of the future." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC09cHxyB4wNG3ajclFHrXUBDfN-6G0s9ad4wjxmIlGwK2BlRJ7yoqKyuuNdqInJB4xXHAv0AqkkMjNFmJ5rj3LH63p1XfnJsq2WeMPHCwDi2G9-wJtBGS408rOmvuqI24wemd3qXJn-f74FIa58EzafOa06shM3PyMx1_fajViAs4EEDmsYAF5kbortVSUf2Z3YJYyUDnOJDd37il_Xht_0j1x3zIZuqi9p9XeSNyVeG1coJ3naqR9lEKkX8jozJvqvV3CEWEu0fm8"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md border border-white/10 text-on-surface font-label-mono text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">image</span>
+                                Image
+                            </span>
+</div>
+</div>
+<div class="p-5">
+<p class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Other</p>
+<h3 class="font-bold text-lg mb-4 text-on-surface">Hardware Schematics</h3>
+<div class="flex justify-between items-center border-t border-white/5 pt-4">
+<div class="flex gap-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded">R&amp;D</span>
+</div>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal for Create/Edit -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-background/80 backdrop-blur-md p-gutter" id="createModal">
+<div class="glass-card w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl transition-all scale-95" id="modalContainer">
+<div class="accent-glow absolute inset-0 -z-10 opacity-50"></div>
+<div class="p-8 border-b border-white/10 flex justify-between items-center">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Manage Asset</h3>
+<p class="text-on-surface-variant text-sm mt-1">Configure your gallery item with precise metadata.</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="toggleModal('createModal')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-8 space-y-6 max-h-[716px] overflow-y-auto">
+<!-- Type Selection -->
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer group">
+<input checked="" class="hidden peer" name="type" onchange="toggleMediaType('image')" type="radio" value="image"/>
+<div class="p-4 border border-white/10 rounded-xl bg-surface-container group-hover:bg-surface-bright peer-checked:border-primary peer-checked:bg-primary/10 transition-all text-center">
+<span class="material-symbols-outlined text-3xl mb-2 peer-checked:text-primary">image</span>
+<p class="font-label-mono text-xs uppercase tracking-widest">Image</p>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" name="type" onchange="toggleMediaType('video')" type="radio" value="video"/>
+<div class="p-4 border border-white/10 rounded-xl bg-surface-container group-hover:bg-surface-bright peer-checked:border-primary peer-checked:bg-primary/10 transition-all text-center">
+<span class="material-symbols-outlined text-3xl mb-2 peer-checked:text-primary">videocam</span>
+<p class="font-label-mono text-xs uppercase tracking-widest">Video</p>
+</div>
+</label>
+</div>
+<!-- Title & Category -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">Item Title</label>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary text-body-base" placeholder="Enter title..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">Category</label>
+<select class="w-full bg-surface-container-low border border-white/10 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary text-body-base appearance-none">
+<option>Projects</option>
+<option>Events</option>
+<option>Office Life</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<!-- Media Input (Dynamic) -->
+<div class="space-y-2" id="imageSection">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">Upload File</label>
+<div class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer bg-surface-container-lowest">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">cloud_upload</span>
+<p class="text-sm text-on-surface-variant">Drag and drop or <span class="text-primary font-bold">browse</span></p>
+<p class="text-[10px] text-on-surface-variant/60 mt-2">Supports JPG, PNG, WEBP (Max 10MB)</p>
+</div>
+</div>
+<div class="hidden space-y-6" id="videoSection">
+<div class="space-y-2">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">Video Source</label>
+<select class="w-full bg-surface-container-low border border-white/10 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary text-body-base appearance-none" onchange="toggleVideoSource(this.value)">
+<option value="upload">Upload File</option>
+<option value="youtube">YouTube URL</option>
+</select>
+</div>
+<div class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer bg-surface-container-lowest" id="videoUpload">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">movie</span>
+<p class="text-sm text-on-surface-variant">Upload MP4 or MOV</p>
+</div>
+<div class="hidden space-y-2" id="videoYoutube">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">YouTube URL</label>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary text-body-base" placeholder="https://youtube.com/watch?v=..." type="text"/>
+</div>
+</div>
+<!-- Tags & Featured -->
+<div class="space-y-4 pt-4 border-t border-white/5">
+<div class="space-y-2">
+<label class="font-label-mono text-[10px] text-on-surface-variant uppercase ml-1">Tags (Comma separated)</label>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary text-body-base" placeholder="ai, robotics, innovation..." type="text"/>
+</div>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-white/10 bg-surface-container-low text-primary focus:ring-offset-background focus:ring-primary" type="checkbox"/>
+<span class="text-body-base text-on-surface">Mark as Featured Asset</span>
+</label>
+</div>
+</form>
+<div class="p-8 border-t border-white/10 flex justify-end gap-4 bg-surface-container-low/50">
+<button class="px-6 py-2 rounded-lg font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-colors" onclick="toggleModal('createModal')">Cancel</button>
+<button class="primary-gradient-btn px-8 py-2 rounded-lg font-label-mono text-label-mono text-on-primary-fixed font-bold">Save Asset</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="lg:ml-64 w-full py-12 px-gutter flex flex-col items-center gap-4 bg-surface-dim border-t border-white/5">
+<p class="font-body-base text-body-base text-on-surface-variant text-center opacity-80 hover:opacity-100 transition-opacity">
+            © 2026 AI Global Summit. Powered by Aether AI.
+        </p>
+<div class="flex gap-6">
+<a class="text-tertiary font-label-mono text-[10px] uppercase hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-tertiary font-label-mono text-[10px] uppercase hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-tertiary font-label-mono text-[10px] uppercase hover:text-secondary transition-colors" href="#">Contact</a>
+<a class="text-tertiary font-label-mono text-[10px] uppercase hover:text-secondary transition-colors" href="#">Press Kit</a>
+</div>
+</footer>
+<script>
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            const container = document.getElementById('modalContainer');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    container.classList.remove('scale-95', 'opacity-0');
+                    container.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                container.classList.remove('scale-100', 'opacity-100');
+                container.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 200);
+            }
+        }
+
+        function toggleMediaType(type) {
+            const imgSec = document.getElementById('imageSection');
+            const vidSec = document.getElementById('videoSection');
+            if (type === 'image') {
+                imgSec.classList.remove('hidden');
+                vidSec.classList.add('hidden');
+            } else {
+                imgSec.classList.add('hidden');
+                vidSec.classList.remove('hidden');
+            }
+        }
+
+        function toggleVideoSource(source) {
+            const vidUp = document.getElementById('videoUpload');
+            const vidYt = document.getElementById('videoYoutube');
+            if (source === 'upload') {
+                vidUp.classList.remove('hidden');
+                vidYt.classList.add('hidden');
+            } else {
+                vidUp.classList.add('hidden');
+                vidYt.classList.remove('hidden');
+            }
+        }
+
+        // Lightweight atmospheric effect: cursor trail glow
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            const radial = `radial-gradient(600px circle at ${x}px ${y}px, rgba(124, 58, 237, 0.05), transparent 40%)`;
+            document.body.style.backgroundImage = radial;
+        });
+    </script>
+</body></html>

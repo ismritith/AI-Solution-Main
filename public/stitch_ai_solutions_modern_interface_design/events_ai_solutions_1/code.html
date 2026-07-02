@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=Geist:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#dae2fd",
+                    "tertiary": "#ffafd3",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-bright": "#31394d",
+                    "on-secondary": "#003640",
+                    "surface-variant": "#2d3449",
+                    "tertiary-container": "#ae397b",
+                    "surface-container-highest": "#2d3449",
+                    "on-surface": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "outline-variant": "#4a4455",
+                    "tertiary-fixed": "#ffd8e7",
+                    "background": "#0b1326",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#3f008e",
+                    "tertiary-fixed-dim": "#ffafd3",
+                    "on-tertiary": "#620040",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-dim": "#0b1326",
+                    "surface-container-high": "#222a3d",
+                    "surface": "#0b1326",
+                    "on-primary-container": "#ede0ff",
+                    "on-tertiary-container": "#ffdce9",
+                    "secondary-fixed": "#acedff",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-fixed-variant": "#85145a",
+                    "surface-container-lowest": "#060e20",
+                    "on-secondary-container": "#00424e",
+                    "secondary": "#4cd7f6",
+                    "outline": "#958da1",
+                    "on-surface-variant": "#ccc3d8",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#eaddff",
+                    "primary": "#d2bbff",
+                    "on-tertiary-fixed": "#3d0026",
+                    "inverse-primary": "#732ee4",
+                    "surface-tint": "#d2bbff",
+                    "primary-container": "#7c3aed",
+                    "on-primary-fixed": "#25005a",
+                    "on-secondary-fixed": "#001f26",
+                    "secondary-container": "#03b5d3",
+                    "inverse-surface": "#dae2fd",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#d2bbff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "section-gap": "120px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-base": ["Inter"],
+                    "headline-md": ["Geist"],
+                    "display-lg-mobile": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .accent-glow {
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AI-Solutions</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Gallery</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-base text-body-base" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold transition-all scale-95 active:scale-90 hover:shadow-[0_0_20px_rgba(124,58,237,0.5)]">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero Banner -->
+<header class="relative w-full h-[614px] flex items-center justify-center overflow-hidden pt-20">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A cinematic, high-resolution view of a futuristic tech conference hall illuminated by glowing violet and cyan neon light strips. The environment is sleek and dark, with glass surfaces reflecting digital data visualizations. In the background, large holographic displays project complex AI neural networks. The atmosphere is sophisticated and professional, capturing the essence of advanced intelligence and technological innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeCDGrhvhZlwRa2jLmGcQZJo54jttFGFoznOlbOjHaj5Grwpo36yom4aIxOfnd-_eMcWaTPncxjNfUrtI0typMAVm2daEvq2pyW6AZImYsnErYFYXZTMY3z_FnyJOzWRDiGxmpnuWERk61YI5Xzn5MJPt-IJw4g0koERJZvUAI1F6cvk8serfpYWU_FPemRGfFUTNmdVKsUQovqFGT4W8agT3Vf31K8hkrAHudxJM0NOgyM_-yi-9i7B228Uqyr1wNLydnRDhgTrcS"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background z-10"></div>
+<div class="relative z-20 text-center max-w-4xl px-gutter">
+<div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full glass-card border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-sm">rocket_launch</span>
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Global Summits 2024</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-4 text-on-surface">Pioneering the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future Horizon</span></h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-2xl mx-auto">
+                Join our exclusive gatherings of industry leaders, developers, and visionaries. Explore the intersection of advanced intelligence and human creativity.
+            </p>
+</div>
+<!-- Decorative Glows -->
+<div class="absolute top-1/2 left-1/4 w-96 h-96 bg-primary accent-glow"></div>
+<div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary accent-glow"></div>
+</header>
+<main class="max-w-container-max mx-auto px-gutter py-section-gap relative">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div class="space-y-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Upcoming Engagements</h2>
+<p class="text-on-surface-variant font-body-base">Curated sessions designed for the next generation of AI architects.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 glass-card rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+<span class="font-label-mono text-label-mono">Filter by Category</span>
+</button>
+</div>
+</div>
+<!-- Events Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Featured Event Card -->
+<div class="md:col-span-8 group relative rounded-xl overflow-hidden glass-card h-full min-h-[400px] flex flex-col justify-end p-8">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A grand auditorium filled with a diverse audience of technology professionals watching a stunning live presentation. The stage features a massive high-definition screen displaying vibrant abstract AI flowcharts in shades of violet and cyan. Subtle smoke effects and dynamic blue stage lighting create an immersive and prestigious atmosphere. The shot is wide, capturing the scale and excitement of a top-tier tech summit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Td8cdCoIN2BtI6strxkmcIcVYxczK-PGlws1h8kI-TDSekARbNjymxdxW2vH3kYLSa0liYeNvJ60Qq6HinReNi98hoM7Gy_VO8nRQ4-wCns3gRpjH5uTgw7Iw7e88dOw7WIC49IfjnNLF873nBZ83ho7B9pBv06QvuYvvXYkL1YR71R4qzLU_LVhiM87fQdsJtP_GzGqIXhfqkMU1XpVO2J92TIKgn-jwdW2d_jS-yTDte5NwaVW3HTOzmh0wpoXs3C7RyD7tbXb"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10"></div>
+<div class="relative z-20">
+<div class="flex items-center gap-4 mb-4">
+<div class="px-3 py-1 rounded bg-primary text-on-primary font-label-mono text-label-mono uppercase">Keynote Event</div>
+<span class="flex items-center gap-1 text-on-surface font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-sm">calendar_month</span> Oct 24, 2024
+                        </span>
+</div>
+<h3 class="font-display-lg-mobile text-display-lg-mobile md:text-[48px] leading-tight mb-4 text-on-surface">Neural Nexus: The 2024 AI Solutions Summit</h3>
+<div class="flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-body-base text-body-base text-on-surface-variant">San Francisco, CA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">confirmation_number</span>
+<span class="font-body-base text-body-base text-on-surface-variant">250 Seats Remaining</span>
+</div>
+</div>
+<button class="px-8 py-3 rounded-lg bg-white text-background font-bold hover:bg-primary transition-all hover:text-white">Register Now</button>
+</div>
+</div>
+</div>
+<!-- Small Event Card 1 -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 flex flex-col justify-between hover:border-primary/50 transition-all">
+<div>
+<div class="mb-4 aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A focused close-up of a high-end mechanical keyboard and a code editor screen in a dimly lit, blue-toned developer workspace. The screen displays clean, colorful code for an AI algorithm. Soft neon lighting reflects off the desk surface, creating a quiet and professional atmosphere of deep work and technical innovation. The lighting emphasizes a tech-sophisticated and modern workspace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2hfyLlqeD1NL1mv68zBRyixnRsyXxF-M-4tAc1d0GocB6xhN6RmR0uIRZyF3S2uikaLFPdpKZ1Da6ijUvpWpbrZC_AsPwbjrZ4I6D2md4D6jntv6xEE91A2qs4EvuJPz4YtmJzi1LMTepW1uuZWRYaRm28mqWHi9ZBVCruI_2s4Sq2IBqaY6Ps8viyTRx7Pv_g8-gTyvRJeb3r7lXkU97RZCu73t4Pq8YRmYDRv6FPiebpHz0VoK4Va2vfAS-eltc7A5PeTn0vKHB"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-secondary px-2 py-1 border border-secondary/30 rounded">Workshop</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Nov 12</span>
+</div>
+<h4 class="font-headline-md text-[24px] mb-2 text-on-surface">Generative Architectures</h4>
+<p class="font-body-base text-body-base text-on-surface-variant mb-6">A deep dive into deploying large language models for enterprise scales.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2 group">
+                    View Details
+                    <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Small Event Card 2 -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 flex flex-col justify-between hover:border-tertiary/50 transition-all">
+<div>
+<div class="mb-4 aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A group of diverse, professional tech experts collaborating in a bright, modern glass-walled office space. They are discussing complex diagrams on a large digital screen that shows AI data flow. The lighting is crisp and cool-toned, with soft reflections of the city skyline in the glass. The mood is collaborative, intelligent, and forward-thinking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALfUdPohg_RpqfM5g2rBRberYmUivFLiktQeYb37ZwnWEWZFk-XvIO74CcFpOeXBJCYWOGB3CQuXLg0kv9fTuZNxTgQDktSlli4Yusp3-1eYsJbbzFFqXd5nAOo8HznB9ViKMj_e-qV3Jk3UjkOVpy4o_l1AlmM1OOmPYSql8SCLdq7PI8xRRb7EH240Amy7jYJ0U4FGRKLJ-my57l8SfnIszvlFkdqj7IkIiFosUhf5eo-PtYWgUCa8cMzp8-D8mmmHg1-YqwpcCJ"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-tertiary px-2 py-1 border border-tertiary/30 rounded">Networking</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Nov 28</span>
+</div>
+<h4 class="font-headline-md text-[24px] mb-2 text-on-surface">AI Founders Gala</h4>
+<p class="font-body-base text-body-base text-on-surface-variant mb-6">Connect with the minds behind the most successful AI startups in London.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline hover:border-tertiary hover:text-tertiary transition-all flex items-center justify-center gap-2 group">
+                    Get Invitation
+                    <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Middle Event Card (Horizontal style) -->
+<div class="md:col-span-8 glass-card rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/3 aspect-square rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-tech digital laboratory featuring translucent glass containers and glowing blue hardware modules. Soft light emanates from within the devices, illuminating a clean, dark surface. The overall style is hyper-modern and clinical, representing the precise and effortless nature of advanced automated intelligence. The lighting is subtle with sharp violet accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwE2LESJKLuvDCfV88fzjCPdPa0bIHxRKn8wKdNEwrtbOsY2pu_xRF970E5zFfNPcfgarV9CGOk4tFuuYVeqYy4ygQyuV4HkGLkN1yRlhG10OBf0mWRUElnoenqJ_516HJ16pA7U0Kh4LFokRMQilVqbLK5f9rr-wSyY2_OrAgZdrWLkRwHQXNHAoejmiSGz88zrxKoM0ZCQYEeH1OdTuToDKGk1yGN0u8MnJes10eF8srpQ-G3AF2oWFWOkp3f3MjYJhxPgL7sfjD"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">videocam</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Global Webinar</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">The Ethics of Autonomy</h3>
+<p class="font-body-base text-body-base text-on-surface-variant mb-6">A panel discussion on the moral frameworks for next-generation automated systems with global policy makers.</p>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-transform hover:scale-105 active:scale-95">Register FREE</button>
+<span class="text-on-surface-variant font-label-mono text-label-mono italic">3.2k Joined</span>
+</div>
+</div>
+</div>
+<!-- Small Event Card 3 -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 flex flex-col justify-between hover:border-primary/50 transition-all">
+<div>
+<div class="mb-4 aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="An abstract, artistic rendering of glowing fiber optic lines pulsing with blue and white light, representing high-speed data transmission and connectivity. The background is a deep, dark slate, providing a cinematic contrast. The lighting is vibrant and kinetic, suggesting a fast-paced and highly connected technological future. The mood is energetic and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ps_9pIUpzZzcel--FLRWEi77SWHsJjbDzBTvRsB9UF1XCOXj_DK08Jpgb3kt7ko0GYlaXcW4cc44WDDHUp_JewwbT-2GbLvm8BMnhQdZS8BuIrsi3R6Ycl79O-fSM9u1A0JKQM9wVJlDAQBYTBNKjSRCQuob3a_cdZtI8giC73o_qT_Pyu9JSIsKRJ3OV0VwFluKOEeQX_numoWpNI6XofycKdaH_b66exqtHhGAaQjvWzuTVSrKgue--baAir6fKCV0bEnA2iMM"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-primary px-2 py-1 border border-primary/30 rounded">Hackathon</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Dec 05</span>
+</div>
+<h4 class="font-headline-md text-[24px] mb-2 text-on-surface">Sprint to AGI</h4>
+<p class="font-body-base text-body-base text-on-surface-variant mb-6">48 hours of intense coding to push the boundaries of general reasoning models.</p>
+</div>
+<button class="w-full py-3 rounded-lg border border-outline hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2 group">
+                    Join Waitlist
+                    <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Newsletter Section (Special) -->
+<div class="mt-section-gap relative p-12 rounded-3xl overflow-hidden glass-card border-white/5 text-center">
+<div class="absolute inset-0 z-0 opacity-20">
+<div class="absolute top-0 right-0 w-80 h-80 bg-primary accent-glow"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-secondary accent-glow"></div>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-headline-md text-headline-md mb-4 text-on-surface">Stay Ahead of the Curve</h2>
+<p class="font-body-base text-body-base text-on-surface-variant mb-8">Receive early access invitations to our private events and insights directly from our lead AI researchers.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow px-6 py-4 rounded-xl bg-surface-container border-outline text-on-surface focus:border-primary transition-colors focus:ring-0" placeholder="Enter your work email" type="email"/>
+<button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary-container text-white font-bold hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] transition-all" type="submit">Subscribe Now</button>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest border-t border-outline-variant py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col gap-6">
+<span class="font-headline-md text-headline-md font-black text-on-surface">AI-Solutions</span>
+<p class="font-body-base text-body-base text-on-surface-variant opacity-80">Empowering the future through advanced intelligence and seamless automation.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">hub</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">share</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-mono text-label-mono text-tertiary uppercase tracking-widest mb-2">Platform</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">API Documentation</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Cloud Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Security Hub</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-mono text-label-mono text-tertiary uppercase tracking-widest mb-2">Company</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Careers</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Support</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-mono text-label-mono text-tertiary uppercase tracking-widest mb-2">Legal</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-outline/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-mono text-label-mono text-on-surface-variant opacity-60">© 2024 AI-Solutions. Empowering the future through advanced intelligence.</p>
+<div class="flex gap-6">
+<span class="font-label-mono text-label-mono text-on-surface-variant">System Status: <span class="text-green-400">All Operational</span></span>
+</div>
+</div>
+</footer>
+</body></html>

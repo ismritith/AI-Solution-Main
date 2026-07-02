@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether AI | Blog Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary": "#4cd7f6",
+                  "tertiary-fixed-dim": "#ffafd3",
+                  "on-background": "#dae2fd",
+                  "tertiary-fixed": "#ffd8e7",
+                  "outline-variant": "#4a4455",
+                  "on-primary-fixed-variant": "#5a00c6",
+                  "secondary-fixed": "#acedff",
+                  "primary-fixed": "#eaddff",
+                  "on-error": "#690005",
+                  "on-tertiary-container": "#ffdce9",
+                  "surface-variant": "#2d3449",
+                  "surface-dim": "#0b1326",
+                  "primary-fixed-dim": "#d2bbff",
+                  "surface-tint": "#d2bbff",
+                  "inverse-surface": "#dae2fd",
+                  "background": "#0b1326",
+                  "outline": "#958da1",
+                  "surface-container-low": "#131b2e",
+                  "on-tertiary-fixed-variant": "#85145a",
+                  "on-surface": "#dae2fd",
+                  "on-primary-container": "#ede0ff",
+                  "on-secondary-fixed": "#001f26",
+                  "tertiary-container": "#ae397b",
+                  "on-secondary": "#003640",
+                  "on-error-container": "#ffdad6",
+                  "primary-container": "#7c3aed",
+                  "surface-container-highest": "#2d3449",
+                  "surface": "#0b1326",
+                  "secondary-fixed-dim": "#4cd7f6",
+                  "error-container": "#93000a",
+                  "on-tertiary-fixed": "#3d0026",
+                  "primary": "#d2bbff",
+                  "on-secondary-container": "#00424e",
+                  "on-tertiary": "#620040",
+                  "on-surface-variant": "#ccc3d8",
+                  "on-secondary-fixed-variant": "#004e5c",
+                  "inverse-primary": "#732ee4",
+                  "tertiary": "#ffafd3",
+                  "error": "#ffb4ab",
+                  "inverse-on-surface": "#283044",
+                  "surface-bright": "#31394d",
+                  "surface-container-lowest": "#060e20",
+                  "surface-container-high": "#222a3d",
+                  "secondary-container": "#03b5d3",
+                  "surface-container": "#171f33",
+                  "on-primary-fixed": "#25005a",
+                  "on-primary": "#3f008e"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "container-max": "1280px",
+                  "section-gap": "120px",
+                  "gutter": "24px",
+                  "margin-mobile": "20px",
+                  "base": "8px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Geist"],
+                  "body-base": ["Inter"],
+                  "display-lg-mobile": ["Geist"],
+                  "label-mono": ["JetBrains Mono"],
+                  "display-lg": ["Geist"]
+          },
+          "fontSize": {
+                  "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                  "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0b1326;
+      color: #dae2fd;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-top-color: rgba(255, 255, 255, 0.15);
+      border-left-color: rgba(255, 255, 255, 0.15);
+    }
+    .action-glow:hover {
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .accent-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(40px);
+    }
+    /* Simple custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #4a4455; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #958da1; }
+  </style>
+</head>
+<body class="min-h-screen flex">
+<!-- Side Navigation Shell -->
+<aside class="hidden lg:flex flex-col h-full py-base bg-surface-container border-r border-white/10 shadow-md fixed left-0 top-0 w-64 z-40">
+<div class="px-6 py-8">
+<div class="font-headline-md text-headline-md text-primary mb-1">Global Summit</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant opacity-70">2026 EDITION</div>
+</div>
+<nav class="flex-1 space-y-2 px-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-label-mono text-label-mono">Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-mono text-label-mono">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-label-mono text-label-mono">Speakers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/5 pt-4 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-mono text-label-mono">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all duration-200 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-mono text-label-mono">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 relative min-h-screen overflow-x-hidden">
+<!-- Top Header -->
+<header class="fixed top-0 left-0 lg:left-64 right-0 z-30 bg-surface/50 backdrop-blur-xl border-b border-white/10 px-gutter py-4 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Blog Management</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-on-surface-variant font-body-base text-body-base focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search blogs..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant">search</span>
+</div>
+<button class="bg-primary text-on-primary font-body-base px-6 py-2 rounded-full font-bold action-glow transition-all active:scale-95 flex items-center gap-2" id="toggle-view-btn" onclick="toggleView()">
+<span class="material-symbols-outlined text-[18px]">add</span>
+          Create New
+        </button>
+</div>
+</header>
+<div class="pt-24 pb-section-gap px-gutter max-w-container-max mx-auto relative">
+<!-- Decor Background Glows -->
+<div class="accent-glow top-[10%] left-[5%]"></div>
+<div class="accent-glow bottom-[20%] right-[10%] opacity-50"></div>
+<!-- INDEX VIEW (Table) -->
+<div class="space-y-8 animate-in fade-in duration-500" id="index-view">
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-highest/50 border-b border-white/10">
+<tr>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase">Title</th>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase">Author</th>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase">Category</th>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase">Status</th>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase">Date</th>
+<th class="px-6 py-4 font-label-mono text-label-mono text-on-surface-variant uppercase text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-6">
+<div class="font-body-base text-body-base font-semibold text-on-surface">The Future of Neural Networks in 2026</div>
+<div class="text-[12px] text-on-surface-variant opacity-60">ID: BLG-001</div>
+</td>
+<td class="px-6 py-6 font-body-base text-body-base">Dr. Aris Thorne</td>
+<td class="px-6 py-6">
+<span class="bg-secondary/10 border border-secondary text-secondary px-3 py-1 rounded-full font-label-mono text-[10px] uppercase">AI Engineering</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-mono text-label-mono text-on-surface">Published</span>
+</div>
+</td>
+<td class="px-6 py-6 font-body-base text-body-base text-on-surface-variant">Oct 12, 2025</td>
+<td class="px-6 py-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" onclick="toggleView()"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-6">
+<div class="font-body-base text-body-base font-semibold text-on-surface">Quantum Sovereignty: Ethics in AI</div>
+<div class="text-[12px] text-on-surface-variant opacity-60">ID: BLG-002</div>
+</td>
+<td class="px-6 py-6 font-body-base text-body-base">Elena Vance</td>
+<td class="px-6 py-6">
+<span class="bg-tertiary/10 border border-tertiary text-tertiary px-3 py-1 rounded-full font-label-mono text-[10px] uppercase">Ethics</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Draft</span>
+</div>
+</td>
+<td class="px-6 py-6 font-body-base text-body-base text-on-surface-variant">Oct 14, 2025</td>
+<td class="px-6 py-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" onclick="toggleView()"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-highest/30 border-t border-white/10 flex items-center justify-between">
+<span class="text-on-surface-variant font-label-mono text-[12px]">Showing 2 of 24 blogs</span>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-on-surface-variant hover:bg-white/5 transition-all"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container text-on-primary-container font-label-mono">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-on-surface-variant hover:bg-white/5 transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-on-surface-variant hover:bg-white/5 transition-all"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- FORM VIEW (Hidden by default) -->
+<div class="hidden space-y-12 animate-in slide-in-from-bottom-8 duration-500" id="form-view">
+<div class="flex items-center gap-4 mb-8">
+<button class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition-all active:scale-90" onclick="toggleView()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Editor: Create New Article</h2>
+<p class="font-body-base text-body-base text-on-surface-variant">Fill in the technical specifications for your blog post.</p>
+</div>
+</div>
+<form class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Basic Info Card -->
+<div class="glass-card p-8 rounded-xl space-y-6">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Blog Title</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary text-headline-md font-headline-md py-4 outline-none transition-all placeholder:opacity-30" placeholder="Enter article headline..." type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Author</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface focus:ring-1 focus:ring-primary transition-all" placeholder="e.g. Dr. Aris Thorne" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Categories</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface focus:ring-1 focus:ring-primary transition-all">
+<option>AI Engineering</option>
+<option>Ethics &amp; Governance</option>
+<option>Hardware Evolution</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Short Summary</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Provide a compelling 2-sentence hook for the feed..." rows="3"></textarea>
+</div>
+</div>
+<!-- Editor Card -->
+<div class="glass-card p-8 rounded-xl space-y-4">
+<div class="flex items-center justify-between">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Main Content</label>
+<div class="flex gap-2">
+<button class="p-1 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-1 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-1 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">link</span></button>
+<button class="p-1 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">code</span></button>
+</div>
+</div>
+<!-- Mock Quill Editor -->
+<div class="min-h-[400px] bg-surface-container-low border border-white/10 rounded-lg p-6 font-body-base text-on-surface overflow-y-auto outline-none focus:ring-1 focus:ring-primary/50" contenteditable="true">
+<p class="text-on-surface-variant italic">Start typing your technical masterpiece here...</p>
+</div>
+</div>
+<!-- Callout Repeater -->
+<div class="glass-card p-8 rounded-xl space-y-6">
+<div class="flex items-center justify-between">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Technical Callouts</label>
+<button class="text-secondary font-label-mono text-[12px] flex items-center gap-1 hover:underline" onclick="addRepeaterItem()" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> ADD ITEM
+                </button>
+</div>
+<div class="space-y-4" id="repeater-container">
+<div class="flex gap-4 animate-in slide-in-from-left-4 duration-300">
+<input class="flex-1 bg-surface-container-high border-none rounded-lg p-3 font-label-mono text-[12px] text-secondary" placeholder="Key (e.g. Latency)" type="text"/>
+<input class="flex-[2] bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface" placeholder="Value (e.g. &lt;20ms)" type="text"/>
+<button class="p-3 text-error/50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Publish Settings -->
+<div class="glass-card p-6 rounded-xl space-y-6">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Status</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface focus:ring-1 focus:ring-primary">
+<option>Draft</option>
+<option>In Review</option>
+<option>Scheduled</option>
+<option>Published</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Publish Date</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface focus:ring-1 focus:ring-primary transition-all" type="date"/>
+</div>
+<div class="space-y-4 pt-4">
+<button class="w-full bg-primary text-on-primary font-body-base py-3 rounded-lg font-bold action-glow transition-all active:scale-95" type="submit">Save &amp; Publish</button>
+<button class="w-full border border-white/10 text-on-surface-variant hover:bg-white/5 font-body-base py-3 rounded-lg transition-all" type="button">Save as Draft</button>
+</div>
+</div>
+<!-- Asset Upload -->
+<div class="glass-card p-6 rounded-xl space-y-4">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Header Image</label>
+<div class="relative group cursor-pointer border-2 border-dashed border-white/10 hover:border-primary/50 rounded-xl overflow-hidden aspect-video flex items-center justify-center transition-all">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity" data-alt="A cinematic, high-detail digital rendering of an abstract AI neural network core, glowing with violet and cyan pulses against a deep navy slate background. The lighting is low-key with sharp neon accents that define the technological depth of the architecture. The mood is sophisticated and futuristic, perfectly aligning with a premium glassmorphism UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOwZkFsZaClh7SB76mlQa3mfpZjmobjavXlJ2aABeXXPH1INaeg4dN0ULq-qSGVolU-g4GgNQg6bJ984qAeuSJ8XZe8oSpi5kRFdiEwZCY7Is2YWTaFLT8peB2jtpQSDIuPIJHoP6SFBhY-nZvU4k1T7uFi-sb-2Plfo3gCllimgQUDFvIDJiVYD7SnQEtgGyJ6BJYLH024fj8nYip82Q7JxXPv1mYf60S80SLzIvI7KZrQleTBltFosQ_enYpvHyhaHG-ZTlHgeZM"/>
+<div class="relative z-10 text-center space-y-2">
+<span class="material-symbols-outlined text-primary text-[40px]">cloud_upload</span>
+<p class="font-body-base text-[14px] text-on-surface-variant">Drop image or <span class="text-primary underline">browse</span></p>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant opacity-60 font-label-mono">Recommended: 1600x900px, MAX 2MB</p>
+</div>
+<!-- Tags -->
+<div class="glass-card p-6 rounded-xl space-y-4">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase">Metadata Tags</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-3 py-1 rounded-lg font-label-mono text-[10px] flex items-center gap-2 border border-white/5">#NEURAL <button class="hover:text-error">×</button></span>
+<span class="bg-surface-container-high px-3 py-1 rounded-lg font-label-mono text-[10px] flex items-center gap-2 border border-white/5">#ETHICS <button class="hover:text-error">×</button></span>
+<button class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-lg font-label-mono text-[10px]">+ ADD TAG</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-gutter flex flex-col items-center gap-base border-t border-white/5 bg-surface-dim mt-auto relative z-20">
+<div class="font-headline-md text-headline-md text-primary opacity-80 mb-2">Aether AI</div>
+<div class="flex gap-8 mb-4">
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+<div class="font-body-base text-body-base text-tertiary opacity-70">© 2026 AI Global Summit. Powered by Aether AI.</div>
+</footer>
+</main>
+<script>
+    function toggleView() {
+      const index = document.getElementById('index-view');
+      const form = document.getElementById('form-view');
+      const btn = document.getElementById('toggle-view-btn');
+
+      if (index.classList.contains('hidden')) {
+        index.classList.remove('hidden');
+        form.classList.add('hidden');
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Create New';
+      } else {
+        index.classList.add('hidden');
+        form.classList.remove('hidden');
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">list</span> Back to Index';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function addRepeaterItem() {
+      const container = document.getElementById('repeater-container');
+      const div = document.createElement('div');
+      div.className = 'flex gap-4 animate-in slide-in-from-left-4 duration-300';
+      div.innerHTML = `
+        <input type="text" placeholder="Key" class="flex-1 bg-surface-container-high border-none rounded-lg p-3 font-label-mono text-[12px] text-secondary">
+        <input type="text" placeholder="Value" class="flex-[2] bg-surface-container-high border-none rounded-lg p-3 font-body-base text-on-surface">
+        <button type="button" onclick="this.parentElement.remove()" class="p-3 text-error/50 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+</body></html>

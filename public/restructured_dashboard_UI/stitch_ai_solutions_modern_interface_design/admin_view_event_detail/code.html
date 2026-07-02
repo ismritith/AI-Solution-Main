@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Global Summit 2026 | Aether Dash</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Geist:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .accent-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(210, 187, 255, 0.08) 0%, rgba(210, 187, 255, 0) 70%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 4px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#7c3aed",
+                        "on-primary": "#3f008e",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffafd3",
+                        "on-primary-fixed": "#25005a",
+                        "surface-container-low": "#131b2e",
+                        "surface-tint": "#d2bbff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "background": "#0b1326",
+                        "surface-container": "#171f33",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dae2fd",
+                        "on-tertiary-container": "#ffdce9",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#620040",
+                        "on-primary-container": "#ede0ff",
+                        "surface-bright": "#31394d",
+                        "on-error": "#690005",
+                        "outline-variant": "#4a4455",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "on-secondary-container": "#00424e",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-primary": "#732ee4",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary-fixed": "#3d0026",
+                        "primary-fixed": "#eaddff",
+                        "primary": "#d2bbff",
+                        "on-secondary": "#003640",
+                        "tertiary-fixed": "#ffd8e7",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0b1326",
+                        "outline": "#958da1",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-container": "#ae397b",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "body-base": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-base text-body-base">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl flex z-[100] py-base">
+<div class="px-gutter mb-12">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Aether AI</h1>
+<p class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-widest opacity-60">Enterprise Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">mail</span> Inquiries
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">event</span> Events
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">article</span> Blogs
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">folder_copy</span> Projects
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">photo_library</span> Gallery
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">rate_review</span> Feedback
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">monitor_heart</span> Health
+            </a>
+</nav>
+<div class="mt-auto px-4 pb-4 space-y-1">
+<button class="w-full bg-gradient-to-r from-primary-container to-secondary-container text-white py-3 rounded-xl font-bold mb-6 hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] transition-all active:scale-95">
+                New Analysis
+            </button>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help_outline</span> Support
+            </a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-50 bg-surface/40 backdrop-blur-2xl border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Aether Dash</span>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="bg-surface-container-highest border-none rounded-full pl-10 pr-4 py-1.5 text-body-base focus:ring-2 focus:ring-primary/50 w-64 transition-all" placeholder="Quick search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-on-surface font-bold">Admin</p>
+<p class="text-[10px] text-on-surface-variant">Administrator Profile</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border border-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR9g_kjnL1v7noDSy7QxQi1C_BjgptIoutmpiClgm9tJTOzejEK1kCtJBRLHrCL-4su7JU1093F4Lg1YcFmcOdKodAsbx5PwTWt3rzCYl8KvnYeJwXlsMicw4JYWqx1B-VBQ2yhD1vXjidYkFE2P-pCdf8kmva9ep7s0zn56CKBUk3sbL59zpj_NgxdRKw3qfHwjtDgu9lGSzO8Xxj-GomMPh3IlZXK1h-wWfGquxdO8dZNaxcH9BEcSTLcx2-GpKXt1jwyv75eaAA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-16 min-h-screen relative overflow-hidden">
+<!-- Background Decorative Glows -->
+<div class="accent-glow top-20 right-20"></div>
+<div class="accent-glow bottom-40 left-10 opacity-50"></div>
+<div class="max-w-container-max mx-auto px-gutter py-12">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary font-label-mono text-label-mono rounded-full">GLOBAL SUMMIT</span>
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            Upcoming Event
+                        </span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface max-w-4xl">AI Global Summit 2026</h2>
+</div>
+<div class="flex gap-4 mb-2">
+<button class="px-6 py-3 glass-card rounded-xl font-bold flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">share</span> Share
+                    </button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-bold flex items-center gap-2 hover:shadow-[0_0_30px_rgba(210,187,255,0.4)] transition-all">
+<span class="material-symbols-outlined">edit</span> Edit Event
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Main Cover Image (Span 8) -->
+<div class="col-span-8 group">
+<div class="glass-card rounded-3xl overflow-hidden aspect-video relative group">
+<img alt="AI Global Summit Cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A futuristic technology conference hall with massive holographic displays projected above a diverse crowd of professionals. The atmosphere is cinematic with deep blue and violet ambient lighting, creating a high-tech and sophisticated mood. Laser beams cross through the air, highlighting the cutting-edge aesthetic of AI Solutions brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM7xLnPniO2Zaaau3cc7lgy1ExmDdnDs5iG6rahalwopbvFOOYN_jhhyr5DjiDH_wQQI54DYQ0lQDKZOTfC787iqdJabCP2EilVtm9NXrw-9jUJtMcLjhDlmSXKqf3Q_9Hhkmv9Ekk3yLUs5iEUgVh8NybVr3Uno_HAgZrDkNi1thHPLG3hYb5GA0sNFo5U5dvsDPcOafg3E182ulRCkxBmJv5XCRIo--ZuNNkCZRWYEBEpZ0z9qQ9rdooHxTjs1e1IXDITbmlBMXc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8">
+<div class="flex items-center gap-4 text-white">
+<div class="w-12 h-12 rounded-full glass-card flex items-center justify-center">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="font-label-mono text-label-mono opacity-80">Location</p>
+<p class="font-bold text-xl">The Silicon Citadel, San Francisco</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Stats Column (Span 4) -->
+<div class="col-span-4 flex flex-col gap-8">
+<!-- Date & Time Card -->
+<div class="glass-card p-8 rounded-3xl flex-1 flex flex-col justify-between">
+<div>
+<p class="font-label-mono text-label-mono text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">event</span> DATE &amp; SCHEDULE
+                            </p>
+<div class="space-y-6">
+<div>
+<h4 class="text-3xl font-bold text-on-surface">Oct 14-16</h4>
+<p class="text-on-surface-variant">Autumn 2026 Quarter</p>
+</div>
+<div class="h-[1px] bg-white/10 w-full"></div>
+<div>
+<p class="font-bold text-on-surface">09:00 AM — 18:00 PM</p>
+<p class="text-on-surface-variant">Pacific Standard Time (PST)</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<button class="w-full py-4 glass-card rounded-xl text-primary font-bold hover:bg-primary/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calendar_add_on</span> Add to Calendar
+                            </button>
+</div>
+</div>
+<!-- Speaker/Guest Card -->
+<div class="glass-card p-6 rounded-3xl h-48 relative overflow-hidden">
+<p class="font-label-mono text-label-mono text-secondary mb-4">CONFIRMED ATTENDEES</p>
+<div class="flex -space-x-4">
+<img alt="Guest 1" class="w-12 h-12 rounded-full border-2 border-[#171f33]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcpqmnxfvPf9siLfPt2BKEAVSxi8RYNMuR5BhFR5FTpCjqNbhYpzTeTmKkfJwrZnN6nWg3_sHev-WggS1RJ0N_ehTmUdVtBlCHaiSpo2Iko2hfZTzBw5a2hqCvcq_jz1k_FyA8JKGw-hnHyWKFmYuMeNmu5APsaVgcphusqiat4z0L0Ai33QNAon0w8nsmugjvB1oYY4WmWn_4026nE69OQNz9IOMXFE-3IqH3b8bydZO5h-rsTa2G2LKtlUdEkqN-JubzbR27lvQf"/>
+<img alt="Guest 2" class="w-12 h-12 rounded-full border-2 border-[#171f33]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeTcrAlkGGZIIbz1jAa-UFSP9tJSZnhPib4VOKRJYQaSQn_ObIIxgs64GMYYvkixY2tPUvfq3hIFwQIJ9ExY9qK25z9SnxNotrHkHtMO8tcKQ5aidTQhzCoYQ8on3_Ip5QBYvW7WkpDpigsfdnSquhCH9rFkIVl_uDGm78XUxSL2sfknRkb6ddOCRi-I5CD3Cq--6kMZLbgeIhYd6cJNmwc72sRFc_IZBTZpDVDmZy7OIgRs6rFqNw_txyt6-r_qXpGBf75CoAa8lp"/>
+<img alt="Guest 3" class="w-12 h-12 rounded-full border-2 border-[#171f33]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFRyhV9d0dCierZWbw55uB4k7Vqweh8QkX6HyqAGha1Z0viPrsQwMpxn3fQOzeNuumchmd0ngIiFfXr83gIj264xguL9dmlKXSTAm4aD0wG-s1QR-qj90y4l-pLZ4JD_YCuipHFiFrc0NYWIRnePlEU8mJnLcCTE5eNGInCBxSiySiJO3gD2p7YHkcSBxVJ2WlwaDFmo0pzaqL8aQYXmGMpab99LM1hgQuFA8-gxrcjqBMg2mep4VAUtvkOYqiEmbVIVPXA_FBfBTS"/>
+<img alt="Guest 4" class="w-12 h-12 rounded-full border-2 border-[#171f33]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7nmeIZr-4iS0nV242z3vfXTk_sjj8ZHx-oA8soIptxtUNjItsd0A5-G-6m9HsHCAbx5pHa4bJMMAaAKTzF8-Y-DTt_DZ76Kpqj1HMYi2Q635_oc2ROxHTb51Xwrb9ZJ9km7ymIT41i0TL6w8M8s-twYZ7EbBrc9himcvWRpFnihZKvxy9sQSKxwyS9YhNZ8HumXbpUOkfUfn2qlrQiVBOQrMXrU3sDqA94KGDb5KevWTaTBc_Jvra_hN2BA1GU5N854tY7r-i07"/>
+<div class="w-12 h-12 rounded-full border-2 border-[#171f33] bg-surface-container-high flex items-center justify-center font-bold text-sm text-primary">+1.2k</div>
+</div>
+<p class="mt-4 text-on-surface-variant text-sm">Registration is currently 85% full.</p>
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10">
+<span class="material-symbols-outlined text-8xl">groups</span>
+</div>
+</div>
+</div>
+<!-- Description & Gallery -->
+<div class="col-span-12 grid grid-cols-12 gap-8">
+<!-- Description (Span 7) -->
+<div class="col-span-7 glass-card p-10 rounded-3xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">About the Summit</h3>
+<div class="space-y-4 text-on-surface-variant leading-relaxed">
+<p>
+                                The AI Global Summit 2026 brings together the world's most innovative minds to explore the next frontier of AGI and autonomous systems. This year, we focus on the integration of quantum computing with neural architectures, seeking to bridge the gap between biological and synthetic intelligence.
+                            </p>
+<p>
+                                Attendees will experience immersive workshops, live demonstrations of the Aether AI Core, and keynote speeches from pioneers in the field. Join us as we redefine the boundaries of what's possible in the age of advanced intelligence.
+                            </p>
+</div>
+<div class="mt-10 grid grid-cols-3 gap-6">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+<span class="material-symbols-outlined text-primary mb-2">location_chip</span>
+<p class="text-sm font-bold text-on-surface">Neural R&amp;D</p>
+<p class="text-xs text-on-surface-variant">Tech Focus</p>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+<span class="material-symbols-outlined text-secondary mb-2">psychology</span>
+<p class="text-sm font-bold text-on-surface">AGI Safety</p>
+<p class="text-xs text-on-surface-variant">Core Pillar</p>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+<span class="material-symbols-outlined text-tertiary mb-2">public</span>
+<p class="text-sm font-bold text-on-surface">Global Scale</p>
+<p class="text-xs text-on-surface-variant">Outreach</p>
+</div>
+</div>
+</div>
+<!-- Gallery & Map (Span 5) -->
+<div class="col-span-5 flex flex-col gap-8">
+<div class="glass-card p-6 rounded-3xl">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-bold text-on-surface">Media Gallery</h4>
+<button class="text-primary text-sm font-label-mono hover:underline">VIEW ALL</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="rounded-2xl overflow-hidden aspect-square">
+<img alt="Gallery 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" data-alt="A close-up shot of a high-tech glass networking lounge at a tech summit. Elegant minimalist furniture is arranged around glowing cyan lighting panels. Through the windows, a blurred futuristic cityscape is visible at night, maintaining the deep slate and cyan palette of AI Solutions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXxPSnj7XNMVmyfk9iqoaew2MN7NxtrsfkSCl0IGhOPkezb3UkUKJndhhBfomE81PU-8w6ZQylIkHN6ngY5cH6DjpyPeLyOhIbByYSrwMdXg25-1xxJf9HA31DE8JmpSrkBP8ZDNEX2pwuXs8O09klA50UNQY6iuJEHW0Huf3vFqLa7l6sd97aUfeG8c3iaGIC3t5rqNjr5DO-rGeX3tNaxdiEinNZuBf_eI3Isq1cnq3nHBoeQWhRyAvnW51EaKnMX_WpjIQ2WXsL"/>
+</div>
+<div class="rounded-2xl overflow-hidden aspect-square">
+<img alt="Gallery 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" data-alt="A professional keynote speaker standing on a dark, sleek stage with a massive circular LED screen behind them. The screen displays complex neural network patterns in soft violet and white. The lighting is high-contrast and professional, emphasizing a modern tech-forward atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJUh2hROTdqfb2qTpDcJaSqyB-JA6XGc4ti7Nx2PL2ha9kfDIg6Dv-vvc-4hi7KrZqzXsC0t1JOov4ypIgkZ-BwQeHAb8nzBUIGQOgjWB_aZNc1b8XDmRUriXuCoONST3hVcgETvlGYeodnj6LsjoO3jFVW_z1CAI-oQrd0tQXgXLSu55GBDdt7tFh8ysPZ7D9NK7CINZA1_QVEvbEcW6lJ6eZpI4-gYDtllsWPhoKieiAO3U8xv7CQgtq-BIlKk6cn5EVd_jfMVgi"/>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl overflow-hidden h-[240px] relative">
+<div class="absolute inset-0 bg-secondary/10 z-10 pointer-events-none"></div>
+<img alt="Location Map" class="w-full h-full object-cover grayscale opacity-60" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArGRZjKkk9oGuSelYNgeOq5YfLSwNhfIWTigAHfRmUG-VUw1TAQnnm9VhPTN4mR7XN7LdVZHHCLNItV0-9zzdzxeUpJE457RD5g7WhTIw89XFIhLiarKYGWLbuhuPs-7G804efIrn6ersTT69bBJQ-LUL202heWV-5kPu6gPcO6fB7XS1yqgLIlG9P1OzEZZPYi15nPWpU4KBfpJm1c71YqPCdsXfEAiRVnm3VTtZHU5WyyawSnQvPqW_yTrWC3KRF4Vw9ZRdmBVHi"/>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 bg-primary/20 backdrop-blur-md rounded-full border border-primary/50 flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="mt-4 px-4 py-2 glass-card rounded-lg text-sm font-bold">The Silicon Citadel</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Spacer -->
+<footer class="py-20 text-center text-on-surface-variant/40 font-label-mono text-label-mono">
+            © 2026 AETHER AI SOLUTIONS • ALL RIGHTS RESERVED
+        </footer>
+</main>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Optional: subtle parallax or light sweep effect
+                // card.style.setProperty('--mouse-x', `${x}px`);
+                // card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+        });
+    </script>
+</body></html>

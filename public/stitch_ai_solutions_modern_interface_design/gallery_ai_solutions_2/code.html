@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gallery | AI-Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Geist:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #0b1326;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.05);
+    }
+    .accent-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .immersive-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      background: #0b1326;
+      overflow: hidden;
+    }
+    .gradient-orb-1 {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      left: -200px;
+      top: 20%;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+    .gradient-orb-2 {
+      position: absolute;
+      width: 1000px;
+      height: 1000px;
+      right: -300px;
+      top: -100px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+    .gradient-orb-3 {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      right: 10%;
+      bottom: -10%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#dae2fd",
+            "tertiary": "#ffafd3",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#004e5c",
+            "surface-bright": "#31394d",
+            "on-secondary": "#003640",
+            "surface-variant": "#2d3449",
+            "tertiary-container": "#ae397b",
+            "surface-container-highest": "#2d3449",
+            "on-surface": "#dae2fd",
+            "surface-container": "#171f33",
+            "on-primary-fixed-variant": "#5a00c6",
+            "outline-variant": "#4a4455",
+            "tertiary-fixed": "#ffd8e7",
+            "background": "#0b1326",
+            "surface-container-low": "#131b2e",
+            "on-primary": "#3f008e",
+            "tertiary-fixed-dim": "#ffafd3",
+            "on-tertiary": "#620040",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#4cd7f6",
+            "surface-dim": "#0b1326",
+            "surface-container-high": "#222a3d",
+            "surface": "#0b1326",
+            "on-primary-container": "#ede0ff",
+            "on-tertiary-container": "#ffdce9",
+            "secondary-fixed": "#acedff",
+            "inverse-on-surface": "#283044",
+            "on-tertiary-fixed-variant": "#85145a",
+            "surface-container-lowest": "#060e20",
+            "on-secondary-container": "#00424e",
+            "secondary": "#4cd7f6",
+            "outline": "#958da1",
+            "on-surface-variant": "#ccc3d8",
+            "error-container": "#93000a",
+            "primary-fixed": "#eaddff",
+            "primary": "#d2bbff",
+            "on-tertiary-fixed": "#3d0026",
+            "inverse-primary": "#732ee4",
+            "surface-tint": "#d2bbff",
+            "primary-container": "#7c3aed",
+            "on-primary-fixed": "#25005a",
+            "on-secondary-fixed": "#001f26",
+            "secondary-container": "#03b5d3",
+            "inverse-surface": "#dae2fd",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#d2bbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1280px",
+            "gutter": "24px",
+            "margin-mobile": "20px",
+            "section-gap": "120px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "body-base": ["Inter"],
+            "headline-md": ["Geist"],
+            "display-lg-mobile": ["Geist"],
+            "display-lg": ["Geist"],
+            "label-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+            "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+            "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- Immersive Gradient Background Elements -->
+<div class="immersive-gradient">
+<div class="gradient-orb-1"></div>
+<div class="gradient-orb-2"></div>
+<div class="gradient-orb-3"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">
+        AI-Solutions
+      </div>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Solutions</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-base text-body-base" href="#">Gallery</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-body-base text-body-base" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block text-on-surface hover:text-primary transition-colors font-body-base text-body-base">Book Now</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-body-base text-body-base font-semibold hover:opacity-90 active:scale-95 transition-all">
+          Get Started
+        </button>
+</div>
+</div>
+</nav>
+<!-- Banner Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="max-w-3xl">
+<div class="flex items-center gap-2 mb-6">
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Digital Showroom</span>
+<div class="h-[1px] w-12 bg-outline-variant"></div>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">
+          Visualizing the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future.</span>
+</h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-xl">
+          Explore our collection of AI-generated masterpieces and technical visualizations. Every pixel is a testament to the seamless fusion of human creativity and advanced intelligence.
+        </p>
+</div>
+</div>
+<!-- Background Image with Blur Overlay -->
+<div class="absolute top-0 right-0 w-full h-full -z-20 opacity-30">
+<img class="w-full h-full object-cover" data-alt="A deep, cinematic background featuring abstract 3D ribbons of light in shades of violet and cyan flowing through a dark, void-like space. The lighting is soft and atmospheric, creating a sense of immense depth and technological sophistication. This visual perfectly aligns with a hyper-modern AI brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2JpNL0931zWLkqwtv2jEXkQ6PrU0w4o4fFsvnSY73irACRp49twzkpOgfwQSDT9RiofY72SJbzlX1OT17cQxWoajzzBMV-zWOFJvNZFOOYoBEFv_hFea2qlfekn-MbsnZCFbbm3DamiTU24XbYD8KXk5hafroK1ncKvpKNYXxIRSHGj1VYQpg4Em4VfhyNyzuW3f1xgoYdd9ML19dqqtRW3BMy5apqmDr3SIZuxsHZqJXcCPeb0KdvkHs5dSyq55irZA85AY8dMAm"/>
+</div>
+</section>
+<!-- Gallery Grid (Bento Style) -->
+<section class="py-section-gap max-w-container-max mx-auto px-gutter relative">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Featured Item -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A large, high-resolution visualization of a neural network mapped as a glowing celestial nebula. Intricate filaments of light connect core nodes in vibrant electric blue and soft magenta. The background is a velvety deep navy, conveying a sense of vast digital intelligence and organic complexity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkVO1RINJiywHS2Br2tobwPGuuyJx7snGxBgppr9BNy4jh_vezlo2KfVrvb7_axiJGgrdj7LgEz6C7b_yMFS5MuPSxso6-IF5ReQBICzofUxj336ld-mC26X0Q54aJTlG2TprmFeOAi6gjLWykOTOQDjd7wea3xUpFYwV-aPt6i3VU3uofrbefZtBI6xmqCP89g9sMXAS41bkntMk3vvZ2m2BQPTnzzZ8KtJvXiS1qBxK8rNuCvXlvFqfrua_4NiWR4Wm7_7vWMHbl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-primary mb-2">Neural Landscapes</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Synaptic Horizon v2.0</h3>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A minimalist architectural render of a futuristic data center with glass walls and floating platforms. The lighting is dominated by cool blue tones and sharp white highlights, emphasizing precision and automated elegance. Soft atmospheric fog sits at the base of the structure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYNjD5jLdw9GeVs1tkrZgtVvfLPLredaIZXd2ZqjQuW7iUTQSLRgBvLooIJ_0gHWJV_haBC_k2yNZioch5DW2GMbza6mNW3GhLzQTXEFO-Z0ARNog5SuuyMBJGxaW8Ak8Xl3qKvpZ50D8RQyrx6jXI7lqPW3OkrFr_F37QLXLT-Ghy3WqAs-pUOLzrPljYLKHq5hZXTZMpGJs3I-FRbR3YVDO6RiYhZCWRaTuzHZ3m3fDIqwtBRjsY3IkaWwFXffcKk-VHD2jVU1PU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-secondary mb-1">Architecture</span>
+<p class="text-on-surface font-semibold">Nexus Hub</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of a holographic interface showing complex data streams and geometric patterns. The aesthetic is clean and high-tech with a focus on translucency and glowing cyan lines. The depth of field is shallow, focusing on a central abstract data node." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO0hAKYpYnY0w3Ui6cHQW5jrqT-DqCFuDjIGQhNn6AJOD4_EYyorbPmwmPwwQ8-qpqSkVmObZBaw0xijxqqKbju62v45JDxWnocva1RmRF1bSk-U1cRm_425jq6-kb7PO8kLQ_l__u9SnMjNbtbW54wB1wB2uW1Ij-_JvglAyu7fG9sfTh5v5B-_-gJSsbWOT_LqUKfShYrjY_LME8g3WSyD04h1mmRHlY2On39heM1m4Uwtmo2Nn5LBeJWizsy92uuWi37L7ZQIIm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-tertiary mb-1">Interfaces</span>
+<p class="text-on-surface font-semibold">Core UI Modules</p>
+</div>
+</div>
+<!-- Item 4 (Horizontal) -->
+<div class="md:col-span-2 relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A wide view of planet Earth from orbit, rendered with stylized digital data overlays representing global connectivity. Shimmering grids and data points wrap around the globe in shades of blue and white. The sun peeks over the horizon, creating a dramatic lens flare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3TU9fTlKXu1elDhpi3ZxxRpjQBXcXTbhakDezAN9RXDjbzzI-UD62XKmDnZHi4da8DllnhdgjQCfA-ynxQGXHewaGLJl9dKIQI0q0S6tOf4I14IPKrGeMEABXz8cGBgXhamBmFhVmDzZdZPhYLD2k-bJdcFaxpajyHLe4-b1TOzzNLhISc9IpRmAYAKwR0kiINDTFbTx-mjYzlTt0Jl7qvPdf7fzZxEFBOQ57Ab5Hjyn6uqIJN3HWsO5USNY3S496hgJhJBeEPIMJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-primary mb-1">Connectivity</span>
+<p class="text-on-surface font-semibold">Global AI Mesh</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Abstract fluid simulation featuring metallic chrome waves flowing through a dark space. The surface of the chrome reflects vibrant pink and violet light sources, creating a high-contrast, liquid-metal look that feels futuristic and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL8hiDVyjbX9u9Z_vGZHaMCZsHsRqXhM4qc_GDkIFXrW2tta77a9-pZWjB4EGpCRDTU2rHHIY316qONv1r9wNc8onDs2gAjpL4OFqCEaUV7I_Tl8KtcR3oEtZfUCerTRql4s_lznffby77SqRAZyfshFyoOryN0GaOopHMPHNdglVNQHdTra-BPI8nUberug1lhrdieaqCfA_nsHRtIncl6HatIoLudzQF8_NwkH8PFTrNOh6yVT7LEtDzGH5z4hKcCzA0Vn0C_PXa"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-tertiary mb-1">Materials</span>
+<p class="text-on-surface font-semibold">Fluid Dynamics</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="relative group overflow-hidden rounded-xl glass-card">
+<img class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Macro photography of a computer circuit board with glowing neon pathways in bright cyan. The lighting suggests high-speed data transfer, with soft bokeh in the background from other electronic components. The overall mood is precise and technical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAprKWWP7jMDDidlK-9d4y0EamQnpZdK8WeuvLdXLB-Aag_MYvM-yj_TGk8GdlOs7ft21lNOpLO4m4grzw1W2OvtbXKS-xFHZ2KLcDU98PLOpQNKg1VO_Rjqfa16Y-usnV1cAh3cd1-59Z72NrO6KeUA9YNDAzuIknh4pj5MpfXBIsCr8eC3L6bePBkD8upuRVWceEBWBmjLBR2aQSlxLeA7797Mbni71I90YHhZAGeR8VhV5VtZhk1qTDRBItmmF2vo93DWgsoaBM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label-mono text-label-mono text-secondary mb-1">Hardware</span>
+<p class="text-on-surface font-semibold">Quantum Pro 1</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section (Glassmorphism Focus) -->
+<section class="py-section-gap max-w-container-max mx-auto px-gutter">
+<div class="glass-card rounded-2xl p-12 text-center relative overflow-hidden">
+<div class="accent-glow -bottom-20 left-1/2 -translate-x-1/2 opacity-50"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Want to see more of the <span class="text-secondary italic">invisible?</span></h2>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-2xl mx-auto mb-10">
+        Our proprietary generative engines are constantly evolving. Join our exclusive waitlist to get early access to the next generation of AI visualization tools.
+      </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-gradient-to-r from-primary-container to-secondary-container text-white px-8 py-3 rounded-lg font-body-base text-body-base font-bold shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+          Join Early Access
+        </button>
+<button class="border border-outline text-on-surface px-8 py-3 rounded-lg font-body-base text-body-base font-semibold hover:bg-white/5 transition-all">
+          View Documentation
+        </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-gutter py-section-gap">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md font-black text-on-surface mb-4">AI-Solutions</div>
+<p class="text-on-surface-variant font-body-base text-body-base opacity-80">
+          Empowering the future through advanced intelligence.
+        </p>
+</div>
+<div>
+<h4 class="font-label-mono text-label-mono text-tertiary mb-6 uppercase tracking-widest">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-base text-body-base" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-base text-body-base" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-base text-body-base" href="#">API Documentation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-mono text-label-mono text-tertiary mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-base text-body-base" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-base text-body-base" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-mono text-label-mono text-tertiary mb-6 uppercase tracking-widest">Newsletter</h4>
+<div class="flex">
+<input class="bg-surface-container border-none text-on-surface rounded-l-lg focus:ring-1 focus:ring-primary w-full font-body-base text-body-base" placeholder="Your email" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-4 rounded-r-lg hover:opacity-90">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter pb-12 border-t border-outline-variant/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-mono text-label-mono text-on-surface-variant/60">
+        © 2024 AI-Solutions. Empowering the future through advanced intelligence.
+      </p>
+<div class="flex gap-6 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">share</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">terminal</span>
+</div>
+</div>
+</footer>
+</body></html>

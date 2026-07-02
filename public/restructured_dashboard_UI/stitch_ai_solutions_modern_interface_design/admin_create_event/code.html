@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Event | Aether Dash</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Geist:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#85145a",
+                      "error": "#ffb4ab",
+                      "primary-container": "#7c3aed",
+                      "on-primary": "#3f008e",
+                      "error-container": "#93000a",
+                      "tertiary": "#ffafd3",
+                      "on-primary-fixed": "#25005a",
+                      "surface-container-low": "#131b2e",
+                      "surface-tint": "#d2bbff",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "inverse-surface": "#dae2fd",
+                      "inverse-on-surface": "#283044",
+                      "background": "#0b1326",
+                      "surface-container": "#171f33",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dae2fd",
+                      "on-tertiary-container": "#ffdce9",
+                      "secondary-fixed": "#acedff",
+                      "surface-container-high": "#222a3d",
+                      "on-secondary-fixed": "#001f26",
+                      "primary-fixed-dim": "#d2bbff",
+                      "surface-container-lowest": "#060e20",
+                      "on-tertiary": "#620040",
+                      "on-primary-container": "#ede0ff",
+                      "surface-bright": "#31394d",
+                      "on-error": "#690005",
+                      "outline-variant": "#4a4455",
+                      "surface-variant": "#2d3449",
+                      "surface": "#0b1326",
+                      "on-secondary-container": "#00424e",
+                      "tertiary-fixed-dim": "#ffafd3",
+                      "on-surface-variant": "#ccc3d8",
+                      "inverse-primary": "#732ee4",
+                      "secondary": "#4cd7f6",
+                      "on-tertiary-fixed": "#3d0026",
+                      "primary-fixed": "#eaddff",
+                      "primary": "#d2bbff",
+                      "on-secondary": "#003640",
+                      "tertiary-fixed": "#ffd8e7",
+                      "on-surface": "#dae2fd",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-dim": "#0b1326",
+                      "outline": "#958da1",
+                      "surface-container-highest": "#2d3449",
+                      "tertiary-container": "#ae397b",
+                      "secondary-container": "#03b5d3",
+                      "on-primary-fixed-variant": "#5a00c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Geist"],
+                      "body-base": ["Inter"],
+                      "label-mono": ["JetBrains Mono"],
+                      "display-lg-mobile": ["Geist"],
+                      "display-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top-left-radius: 0.75rem;
+            position: relative;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.2), transparent);
+            pointer-events: none;
+        }
+        .bg-glow {
+            background: radial-gradient(circle at center, rgba(210, 187, 255, 0.05) 0%, transparent 70%);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2bbff !important;
+            box-shadow: 0 0 0 1px rgba(210, 187, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl z-[60] flex py-base">
+<div class="px-6 py-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Aether AI</h1>
+<p class="text-on-surface-variant font-label-mono text-[10px] tracking-[0.2em] uppercase mt-1">Enterprise Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span>Inquiries</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">event</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">article</span>
+<span>Blogs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">folder_copy</span>
+<span>Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">photo_library</span>
+<span>Gallery</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span>Feedback</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span>Health</span>
+</a>
+</nav>
+<div class="px-4 py-6 border-t border-white/5 space-y-1">
+<button class="w-full mb-4 py-3 bg-gradient-to-r from-primary-container to-secondary-container rounded-xl text-on-primary font-bold shadow-lg shadow-primary-container/20 active:scale-95 transition-transform">
+                New Analysis
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-mono font-label-mono">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-label-mono font-label-mono">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen relative">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-50 bg-surface/40 backdrop-blur-2xl border-b border-white/10 flex justify-between items-center px-gutter h-16 shadow-sm">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 group focus-within:ring-2 focus-within:ring-primary/50 px-3 py-1.5 bg-surface-container-highest/30 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none p-0 text-body-base focus:ring-0 placeholder:text-outline w-48 transition-all group-focus-within:w-64" placeholder="Search operations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<div class="h-8 w-px bg-white/10"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-on-surface leading-none">Admin</p>
+<p class="text-[10px] text-primary mt-0.5">Systems Manager</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary/20 group-hover:border-primary transition-colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhbfqySOCSn0tlzfZ4z0nDY7LB9eix8oZAIbKltcQqIt0LHH66pXmxyhTo62h4SPGY3cI-03J2ResY8rPXdmn-zYntHNNwNfeCpgg7pp2oxLZM8Kq_H1qyRfNbevLwHzkL7khVg2TSIPZ0pJLQR-_XEcGopn3fqQyr2HQoo8ljKw8nbzedtkgdQwMzSt8sWnQfh_NgMK1mjDsK98S4sA1LLhdB9FwsTnzNNYQcSJIVRWA0wjYl-2y0xXlALjDmPXK__py-6K1LSRfj"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="pt-24 pb-12 px-gutter max-w-5xl mx-auto">
+<div class="mb-10">
+<div class="flex items-center gap-2 text-primary font-label-mono text-label-mono mb-2">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span>EVENT MANAGEMENT</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Create New Event</h2>
+<p class="text-on-surface-variant mt-2">Configure institutional gatherings and virtual summits with intelligent scheduling.</p>
+</div>
+<form class="space-y-10">
+<!-- Section 1: Basic Info -->
+<section class="glass-card p-8 shadow-xl">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div>
+<h3 class="font-headline-md text-xl text-on-surface">Section 1: Basic Info</h3>
+<p class="text-sm text-on-surface-variant">Primary identifiers and timing for the event.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-2">
+<label class="text-label-mono text-on-surface-variant ml-1">Event Title</label>
+<input class="bg-surface-container-highest/30 border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:bg-surface-container-highest/50 transition-all" placeholder="e.g. Quantum Computing Summit 2024" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-mono text-on-surface-variant ml-1">Category</label>
+<select class="bg-surface-container-highest/30 border border-white/10 rounded-xl px-4 py-3 text-on-surface appearance-none focus:bg-surface-container-highest/50 transition-all">
+<option>Intelligence Workshop</option>
+<option>Tech Conference</option>
+<option>Networking Event</option>
+<option>Webinar</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-mono text-on-surface-variant ml-1">Event Date &amp; Time</label>
+<input class="bg-surface-container-highest/30 border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:bg-surface-container-highest/50 transition-all [color-scheme:dark]" type="datetime-local"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-mono text-on-surface-variant ml-1">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[18px]">location_on</span>
+<input class="w-full bg-surface-container-highest/30 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-on-surface focus:bg-surface-container-highest/50 transition-all" placeholder="Global HQ or Virtual Link" type="text"/>
+</div>
+</div>
+<div class="col-span-2 mt-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-12 h-6 bg-surface-container-highest rounded-full border border-white/10 transition-colors group-hover:border-primary/50">
+<input class="sr-only peer" type="checkbox"/>
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full transition-all peer-checked:left-7 peer-checked:bg-primary shadow-sm"></div>
+</div>
+<span class="text-body-base text-on-surface font-medium">Is Featured Event</span>
+<span class="text-label-mono text-[10px] bg-secondary/10 text-secondary border border-secondary/20 px-2 py-0.5 rounded uppercase">Visibility Boost</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 2: Media & Description -->
+<section class="glass-card p-8 shadow-xl">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary">burst_mode</span>
+</div>
+<div>
+<h3 class="font-headline-md text-xl text-on-surface">Section 2: Media &amp; Description</h3>
+<p class="text-sm text-on-surface-variant">Visual assets and detailed event agenda.</p>
+</div>
+</div>
+<div class="space-y-8">
+<div class="flex flex-col gap-2">
+<label class="text-label-mono text-on-surface-variant ml-1">Event Description</label>
+<!-- Mock Quill Editor -->
+<div class="rounded-xl border border-white/10 bg-surface-container-highest/20 overflow-hidden">
+<div class="bg-surface-container-high/60 border-b border-white/10 p-2 flex gap-2">
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">link</span></button>
+</div>
+<textarea class="w-full bg-transparent border-none p-4 text-on-surface focus:ring-0 resize-none" placeholder="Describe the event core objectives and itinerary..." rows="6"></textarea>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<label class="text-label-mono text-on-surface-variant ml-1">Main Cover Image</label>
+<div class="relative group cursor-pointer h-48 rounded-2xl border-2 border-dashed border-white/10 hover:border-primary/50 transition-all flex flex-col items-center justify-center bg-surface-container-lowest/40 overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity" data-alt="A cinematic, high-angle shot of a futuristic technology conference hall with a massive glowing holographic globe in the center. The environment is dark and professional, utilizing deep navy and slate tones with vibrant violet and cyan neon accents reflecting off glass surfaces. The lighting is sophisticated, creating a sense of professional mystery and technological elegance in a hyper-modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD3RWLCykfdy3lmAbwd_DidptovP-zkkiRJ97hNB7FW3I_0TYFa7teSaVFYRjeHY8fTEI7bfUUexjTYw5wc8llN25NrJGjFz3PY6cgTSU9aZLl-f9nt0IY2MV7Zhxttklgz7bzUd5WjUh4_fyDGPfztfB0xB6Sa1XeGC82dTeZvIttEEJiaHCtDAQ4peIjRGNw-QvNbpHt7DyFSFlIVKaLO_tNIZdy0tP4L2NmR3bCiASj_yG4kVd3KIWZ4ElZXj4cWxw3z3g9l5Ap"/>
+<span class="material-symbols-outlined text-4xl text-outline mb-2 group-hover:text-primary transition-colors">cloud_upload</span>
+<p class="text-sm font-medium">Click to upload main asset</p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-wider">PNG, JPG up to 10MB</p>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<label class="text-label-mono text-on-surface-variant ml-1">Additional Gallery Images</label>
+<div class="grid grid-cols-2 gap-3 h-48">
+<div class="rounded-xl border border-white/10 bg-surface-container-highest/20 flex items-center justify-center border-dashed hover:border-secondary/50 transition-colors group cursor-pointer relative overflow-hidden">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">add_photo_alternate</span>
+<input class="absolute inset-0 opacity-0 cursor-pointer" multiple="" type="file"/>
+</div>
+<div class="rounded-xl border border-white/10 bg-surface-container-highest/20 relative overflow-hidden group">
+<img class="w-full h-full object-cover opacity-40" data-alt="A close-up view of a high-tech digital control panel with intricate light-up circuits and touch-sensitive interfaces. The color palette is dominated by dark slate and charcoal, punctuated by soft glowing cyan and violet indicator lights. The visual style is glassmorphism with soft backdrop blurs and subtle 1px highlights on the edges, evoking a sense of effortless advanced intelligence and professional mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjij3ISsRkPXlURAvkXYzpyiQK0UtifBbUDqf1tDjD0QpqQVBL2B_fnx2AfB5AR1j7Et5_7MHtzMC-5LauyNIOpu2vNo5zWVe5GmNxY-gqGPSY8f36hmvIR-IEhPECWaQBqxdIsAVVBZuYjNRn75TLQ-Q4p34TOzzt-MDb4cOJ7wy_JVqK8B_H9hgezOpNn-LFBflEEHS0vKQSwOJ-qDWZyUibGSuVfbzF-o2F5phaCSI7oqk7FZ_SoPRw6xlLCO_kp8fSnbTZSCbe"/>
+<button class="absolute top-2 right-2 w-6 h-6 bg-error/20 hover:bg-error/40 text-error rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Footer -->
+<div class="flex items-center justify-end gap-4 pb-12">
+<button class="px-8 py-3 rounded-xl border border-white/10 text-on-surface-variant font-medium hover:bg-white/5 transition-colors" type="button">
+                        Discard Draft
+                    </button>
+<button class="group relative px-10 py-3 rounded-xl overflow-hidden font-bold text-on-primary" type="submit">
+<div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-500 transition-transform group-hover:scale-110"></div>
+<span class="relative flex items-center gap-2">
+                            Deploy Event <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Decorative background elements -->
+<div class="fixed top-1/4 -right-64 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="fixed bottom-1/4 -left-64 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+</main>
+<script>
+        // Micro-interactions for form fields
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('focus', () => {
+                const parent = field.closest('.glass-card');
+                if (parent) {
+                    parent.style.boxShadow = '0 25px 50px -12px rgba(210, 187, 255, 0.1)';
+                    parent.style.transition = 'all 0.4s ease';
+                }
+            });
+            field.addEventListener('blur', () => {
+                const parent = field.closest('.glass-card');
+                if (parent) {
+                    parent.style.boxShadow = '';
+                }
+            });
+        });
+
+        // Toggle Switch Animation
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                const slider = this.nextElementSibling;
+                if(this.checked) {
+                    slider.classList.add('translate-x-0');
+                    slider.parentElement.classList.add('bg-primary/20');
+                } else {
+                    slider.classList.remove('translate-x-0');
+                    slider.parentElement.classList.remove('bg-primary/20');
+                }
+            });
+        });
+    </script>
+</body></html>

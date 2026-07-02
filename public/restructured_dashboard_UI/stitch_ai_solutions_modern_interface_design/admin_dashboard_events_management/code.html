@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#4cd7f6",
+                    "tertiary-fixed-dim": "#ffafd3",
+                    "on-background": "#dae2fd",
+                    "tertiary-fixed": "#ffd8e7",
+                    "outline-variant": "#4a4455",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#eaddff",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffdce9",
+                    "surface-variant": "#2d3449",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#d2bbff",
+                    "surface-tint": "#d2bbff",
+                    "inverse-surface": "#dae2fd",
+                    "background": "#0b1326",
+                    "outline": "#958da1",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary-fixed-variant": "#85145a",
+                    "on-surface": "#dae2fd",
+                    "on-primary-container": "#ede0ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary-container": "#ae397b",
+                    "on-secondary": "#003640",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#7c3aed",
+                    "surface-container-highest": "#2d3449",
+                    "surface": "#0b1326",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#3d0026",
+                    "primary": "#d2bbff",
+                    "on-secondary-container": "#00424e",
+                    "on-tertiary": "#620040",
+                    "on-surface-variant": "#ccc3d8",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "inverse-primary": "#732ee4",
+                    "tertiary": "#ffafd3",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#283044",
+                    "surface-bright": "#31394d",
+                    "surface-container-lowest": "#060e20",
+                    "surface-container-high": "#222a3d",
+                    "secondary-container": "#03b5d3",
+                    "surface-container": "#171f33",
+                    "on-primary-fixed": "#25005a",
+                    "on-primary": "#3f008e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "section-gap": "120px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "body-base": ["Inter"],
+                    "display-lg-mobile": ["Geist"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #03b5d3 100%);
+        }
+        .accent-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Transition utility */
+        .smooth-transition {
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- App Shell Container -->
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation (Predicted SideNavBar) -->
+<aside class="hidden lg:flex flex-col h-full w-64 bg-surface-container border-r border-white/10 py-base z-40">
+<div class="px-6 py-8 flex items-center gap-3">
+<div class="w-10 h-10 primary-gradient rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h1 class="font-headline-md text-primary text-[20px] leading-none">Global Summit</h1>
+<p class="font-label-mono text-on-surface-variant text-[10px] tracking-wider uppercase mt-1">2026 Edition</p>
+</div>
+</div>
+<nav class="mt-4 flex-1">
+<div class="space-y-2 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded-lg smooth-transition font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg smooth-transition font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">event</span> Events
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded-lg smooth-transition font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">calendar_today</span> Schedule
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded-lg smooth-transition font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">engineering</span> Speakers
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded-lg smooth-transition font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                    </a>
+</div>
+</nav>
+<div class="p-4 mt-auto space-y-2 border-t border-white/5">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">help</span> Help
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar relative">
+<div class="accent-glow top-0 right-0"></div>
+<div class="accent-glow bottom-0 left-0" style="background: radial-gradient(circle, rgba(76, 215, 246, 0.1) 0%, transparent 70%);"></div>
+<!-- Top Header (Predicted TopNavBar) -->
+<header class="sticky top-0 z-30 bg-surface/50 backdrop-blur-xl border-b border-white/10 px-gutter py-4 flex justify-between items-center max-w-full">
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold text-primary text-[24px]">Events Management</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6 font-body-base text-body-base">
+<span class="text-primary font-bold border-b-2 border-primary pb-1">Index</span>
+<span class="text-on-surface-variant hover:text-primary smooth-transition cursor-pointer">Archive</span>
+<span class="text-on-surface-variant hover:text-primary smooth-transition cursor-pointer">Categories</span>
+</div>
+<button class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 smooth-transition flex items-center gap-2" id="open-create-btn">
+<span class="material-symbols-outlined text-[18px]">add</span> Create Event
+                    </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/10 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAlfyTshs90XnMRwCy9alplLIdP0R-MpoAhrnX49uWfa-EM_-ccMyc0enadtVj5jXFQeht0nD6T4g0GqwB-dPyf_iuqFM6cRbpATIh--GLmpfLAIfoSrHvqw1k-1g94K6Xx0iW5UtUprpGy5C6E3bTZjuDTgK_ZCNBmGd3pgTQl8LoYDrnoG0JFX-4bK82wTCLgPBNoTOoGywxKFiPraClxY4CXbZCjaFx_SnzohoS-fi5An5C6FMXAbNux_xk_7rEKVj9SW5qgM_H"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-gutter max-w-container-max mx-auto space-y-12 pb-24">
+<!-- Index View -->
+<section id="index-section">
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<p class="font-label-mono text-secondary uppercase tracking-widest text-[11px] mb-2">Inventory</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">Scheduled Events</h3>
+</div>
+<div class="flex gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary w-64 text-on-surface" placeholder="Search events..." type="text"/>
+</div>
+<button class="bg-surface-container-high border border-white/10 p-2 rounded-xl text-on-surface-variant hover:text-on-surface smooth-transition">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Event Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Event Card 1 -->
+<div class="glass-card rounded-2xl p-5 group flex flex-col h-full hover:border-primary/40 smooth-transition">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 smooth-transition" data-alt="A wide-angle cinematic shot of a futuristic AI conference stage with holographic displays and violet lighting. The atmosphere is professional, energetic, and highly advanced, with a diverse crowd visible in silhouette in the foreground. Deep navy tones dominate the palette with cyan glowing accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByZg-SuoBEYhWCirUda_krmAQ18yhWc9ldwM2N5pLNO9NF5oANOrSuA_RkrqHCecdOVhQ74tPujWGaafJpQVsksKJ7oi-df8ozlQsBIQccPba_ujQbZivYnq0ixn4On2IQuDrFBcRKps2hx9c3zV4p0FjrHmvQwlZDZOhnGPgw1qJ7r2Db9LISbDXy7P8OD60QZbD8_vnqGynp01nS_bAvIsEOXhd9zcQmxo2E-X7xSgypp70jUNceexoZGMzEG1bEZoWzDS8oJe5J"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-tertiary-container/80 backdrop-blur-md text-on-tertiary-container text-[10px] font-label-mono px-3 py-1 rounded-full border border-tertiary/20 uppercase">Featured</span>
+<span class="bg-background/60 backdrop-blur-md text-on-surface text-[10px] font-label-mono px-3 py-1 rounded-full border border-white/10 uppercase">Workshop</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-xl text-on-surface mb-2">Neural Networks 2026</h4>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> Oct 24, 2026 • 09:00 AM
+                                    </div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span> San Francisco, CA
+                                    </div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border border-background bg-surface-bright flex items-center justify-center text-[10px] font-bold">+120</div>
+</div>
+<div class="flex gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container-high border border-white/10 text-on-surface-variant hover:text-primary smooth-transition">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container-high border border-white/10 text-on-surface-variant hover:text-secondary smooth-transition" onclick="toggleForm()">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-error-container/20 border border-error/10 text-error hover:bg-error/30 smooth-transition">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="glass-card rounded-2xl p-5 group flex flex-col h-full hover:border-primary/40 smooth-transition">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 smooth-transition" data-alt="A sophisticated black-tie gala evening for a technology summit, set in a glass-walled venue overlooking a city skyline at dusk. Warm amber lighting contrasts with cool blue tech accents. The atmosphere is elegant and premium, featuring sleek, minimal furniture and advanced lighting fixtures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7KeAk1v5bMeUzv3PCqU-H7JjObDJJFNk9ReWhl-wtzDB0jqsNfqzhrVloM_ARviavZ1ey_K4BV64ambvnJxM2Wpp3n9Ecxg3u8J_4feUO8LuaS-Hev61W53xjHfai3f1hoz8nhdVWBZL1th6IktkaPkdGeFT5RbgfR91L_oLClfFTxqEZGjOaabkl8x8sApS4_tryYGgOSuOP09kamQnbO6h_vgaw6fIWxHQdmwvJ4iWif6HS2jR9w2HCbdsqJK1ZQk3flCvOJhNa"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-background/60 backdrop-blur-md text-on-surface text-[10px] font-label-mono px-3 py-1 rounded-full border border-white/10 uppercase">Gala</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-xl text-on-surface mb-2">Aether Awards Night</h4>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> Nov 12, 2026 • 07:00 PM
+                                    </div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span> New York, NY
+                                    </div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-white/5">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border border-background bg-surface-bright flex items-center justify-center text-[10px] font-bold">+45</div>
+</div>
+<div class="flex gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container-high border border-white/10 text-on-surface-variant hover:text-primary smooth-transition">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container-high border border-white/10 text-on-surface-variant hover:text-secondary smooth-transition" onclick="toggleForm()">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-error-container/20 border border-error/10 text-error hover:bg-error/30 smooth-transition">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add New Event Card (Placeholder) -->
+<div class="border-2 border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center group cursor-pointer hover:border-primary/40 hover:bg-white/5 smooth-transition" onclick="toggleForm()">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:bg-primary/20 group-hover:text-primary smooth-transition mb-4">
+<span class="material-symbols-outlined text-4xl">add_circle</span>
+</div>
+<h4 class="font-headline-md text-lg text-on-surface">Add New Event</h4>
+<p class="text-on-surface-variant text-sm mt-2">Scale your reach with a new summit entry</p>
+</div>
+</div>
+</section>
+<!-- Form View (Hidden by Default) -->
+<section class="hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="form-section">
+<div class="mb-8 flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high border border-white/10 text-on-surface-variant hover:text-primary smooth-transition" onclick="toggleForm()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<p class="font-label-mono text-secondary uppercase tracking-widest text-[11px] mb-1">Editor</p>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="form-title">Create New Event</h3>
+</div>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Primary Details -->
+<div class="lg:col-span-2 space-y-6">
+<div class="glass-card rounded-2xl p-8 space-y-6">
+<div class="space-y-4">
+<label class="font-label-mono text-sm text-on-surface-variant block">Event Title</label>
+<input class="w-full bg-surface-container-low border-white/10 rounded-xl px-4 py-3 text-on-surface focus:ring-primary focus:border-primary smooth-transition" placeholder="Enter event name..." type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<label class="font-label-mono text-sm text-on-surface-variant block">Category</label>
+<select class="w-full bg-surface-container-low border-white/10 rounded-xl px-4 py-3 text-on-surface focus:ring-primary focus:border-primary smooth-transition">
+<option>Workshop</option>
+<option>Keynote</option>
+<option>Gala</option>
+<option>Panel Discussion</option>
+<option>Networking</option>
+</select>
+</div>
+<div class="space-y-4">
+<label class="font-label-mono text-sm text-on-surface-variant block">Date &amp; Time</label>
+<input class="w-full bg-surface-container-low border-white/10 rounded-xl px-4 py-3 text-on-surface focus:ring-primary focus:border-primary smooth-transition" type="datetime-local"/>
+</div>
+</div>
+<div class="space-y-4">
+<label class="font-label-mono text-sm text-on-surface-variant block">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface-container-low border-white/10 rounded-xl pl-10 pr-4 py-3 text-on-surface focus:ring-primary focus:border-primary smooth-transition" placeholder="Venue or Digital Link..." type="text"/>
+</div>
+</div>
+<div class="space-y-4">
+<label class="font-label-mono text-sm text-on-surface-variant block">Description</label>
+<div class="min-h-[200px] bg-surface-container-low border border-white/10 rounded-xl p-4">
+<div class="flex gap-4 border-b border-white/5 pb-3 mb-3 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">format_bold</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">format_italic</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">format_list_bulleted</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">link</span>
+</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-on-surface h-32 resize-none font-body-base" placeholder="Describe your event in detail..."></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Settings & Media -->
+<div class="space-y-6">
+<!-- Status Card -->
+<div class="glass-card rounded-2xl p-6 space-y-6">
+<h4 class="font-label-mono text-sm text-on-surface uppercase tracking-wider">Publishing</h4>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="text-sm font-body-base text-on-surface group-hover:text-primary smooth-transition">Is Featured Event</span>
+</label>
+<div class="pt-4 border-t border-white/5">
+<button class="w-full primary-gradient text-white py-3 rounded-xl font-bold hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02] smooth-transition" type="button">Save &amp; Publish</button>
+<button class="w-full mt-3 text-on-surface-variant text-sm font-medium hover:text-on-surface smooth-transition" type="button">Save Draft</button>
+</div>
+</div>
+<!-- Media Card -->
+<div class="glass-card rounded-2xl p-6 space-y-6">
+<h4 class="font-label-mono text-sm text-on-surface uppercase tracking-wider">Media Assets</h4>
+<!-- Main Image -->
+<div class="space-y-3">
+<p class="text-[12px] font-label-mono text-on-surface-variant">MAIN COVER</p>
+<div class="border-2 border-dashed border-white/10 rounded-xl aspect-video flex flex-col items-center justify-center cursor-pointer hover:bg-white/5 smooth-transition relative overflow-hidden group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">upload_file</span>
+<span class="text-[10px] text-on-surface-variant mt-2">Drop image here</span>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+<!-- Additional Images -->
+<div class="space-y-3">
+<p class="text-[12px] font-label-mono text-on-surface-variant">GALLERY (MAX 2)</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="border-2 border-dashed border-white/10 rounded-xl aspect-square flex items-center justify-center cursor-pointer hover:bg-white/5 relative overflow-hidden">
+<img alt="Preview" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkc6Sk7iKl_IiSj7Iv0ExzzOMa7QN1dfxhh80IHqyBPiDUKOSk21uQRV-mO9STl5DTSEsq2sy_BC-YH4_FSx_2GMWSvTZlpTAthPATRx0HfxD06eo7_RERQbfJFkip8eYtsUcAN7agAAvfNaKXej_mI2TcOBQ_vpHZ6FGs1iOXrNPL1wKrqlNDAnBZyxrGZMjw6KPlhtFq8tmR5yghHaxk4n6cbnxp00iCen0RrGUPe8A51Ib1NITZvAuR4ggcKKh-Wy7y_tx8Ksxa"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 flex items-center justify-center smooth-transition">
+<span class="material-symbols-outlined text-white text-[18px]">close</span>
+</div>
+</div>
+<div class="border-2 border-dashed border-white/10 rounded-xl aspect-square flex items-center justify-center cursor-pointer hover:bg-white/5 smooth-transition group relative">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary text-[18px]">add</span>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</section>
+</div>
+<!-- Footer (Predicted Footer) -->
+<footer class="w-full py-section-gap px-gutter flex flex-col items-center gap-base border-t border-white/5 bg-surface-dim mt-24">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary text-[20px]">Aether AI</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6 mb-8 text-on-surface-variant font-body-base text-body-base">
+<a class="hover:text-secondary smooth-transition" href="#">Privacy Policy</a>
+<a class="hover:text-secondary smooth-transition" href="#">Terms of Service</a>
+<a class="hover:text-secondary smooth-transition" href="#">Contact</a>
+<a class="hover:text-secondary smooth-transition" href="#">Press Kit</a>
+</div>
+<p class="font-body-base text-on-surface-variant opacity-60 text-sm">© 2026 AI Global Summit. Powered by Aether AI.</p>
+</footer>
+</main>
+</div>
+<script>
+        function toggleForm() {
+            const index = document.getElementById('index-section');
+            const form = document.getElementById('form-section');
+            const createBtn = document.getElementById('open-create-btn');
+            
+            if (index.classList.contains('hidden')) {
+                index.classList.remove('hidden');
+                form.classList.add('hidden');
+                createBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Create Event';
+            } else {
+                index.classList.add('hidden');
+                form.classList.remove('hidden');
+                createBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">list</span> View Index';
+                // Reset scroll to top of main content
+                document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('open-create-btn').addEventListener('click', toggleForm);
+
+        // Simple scale effect for interactions
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

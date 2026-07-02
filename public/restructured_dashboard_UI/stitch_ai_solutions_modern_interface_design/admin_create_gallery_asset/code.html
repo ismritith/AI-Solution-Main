@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#7c3aed",
+                        "on-primary": "#3f008e",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffafd3",
+                        "on-primary-fixed": "#25005a",
+                        "surface-container-low": "#131b2e",
+                        "surface-tint": "#d2bbff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "background": "#0b1326",
+                        "surface-container": "#171f33",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dae2fd",
+                        "on-tertiary-container": "#ffdce9",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#620040",
+                        "on-primary-container": "#ede0ff",
+                        "surface-bright": "#31394d",
+                        "on-error": "#690005",
+                        "outline-variant": "#4a4455",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "on-secondary-container": "#00424e",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-primary": "#732ee4",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary-fixed": "#3d0026",
+                        "primary-fixed": "#eaddff",
+                        "primary": "#d2bbff",
+                        "on-secondary": "#003640",
+                        "tertiary-fixed": "#ffd8e7",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0b1326",
+                        "outline": "#958da1",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-container": "#ae397b",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "body-base": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.05);
+        }
+        .primary-glow {
+            box-shadow: 0 0 20px rgba(210, 187, 255, 0.2);
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #03b5d3 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl z-[60]">
+<div class="p-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Aether AI</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant tracking-widest mt-1">Enterprise Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span>Inquiries</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">article</span>
+<span>Blogs</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">folder_copy</span>
+<span>Projects</span>
+</a>
+<!-- Active Item: Gallery -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">photo_library</span>
+<span>Gallery</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span>Feedback</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span>Health</span>
+</a>
+</nav>
+<div class="p-6 border-t border-white/5 space-y-2">
+<a class="flex items-center gap-4 px-4 py-2 text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-18rem)] z-50 bg-surface/40 backdrop-blur-2xl border-b border-white/10 h-16 flex items-center justify-between px-gutter">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-on-surface font-label-mono text-label-mono focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search system..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200">dark_mode</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-white/10">
+<div class="text-right hidden sm:block">
+<p class="text-label-mono font-label-mono text-on-surface leading-none">Admin</p>
+<p class="text-[10px] font-label-mono text-primary uppercase tracking-tighter">System Root</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border border-primary/30 object-cover" data-alt="A close-up portrait of a professional system administrator in a high-tech control room environment. The lighting is dramatic, with cool blue and purple tones from glowing server racks reflecting on their face. The image has a sharp, cinematic digital aesthetic with shallow depth of field, emphasizing a mood of focused technical expertise and modern corporate intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGo1amaggLvGbl_pGhIUMQ5Q8MDGdydGO1s1MZevWT6zydFj1BF7aQn4ALRHDt2tRKbN9KooqO09cWARhaxycYP_erShlZgftL3VVqJb8Qko96d6Ztv7azrGk2PWtg_s3t3vQzaOpei7QHhb1JWA87ps0en-gvRJomirhtN4jK5WWO9h_DE83zlC_Gf0XL9FfXkHgpb3jFxUtE5iz1Z0jLOwlDUKmFsvBVRc-ydR0dJBr6yZqeVpHUx4tz3E-aCJfrbAII6nUWKO7d"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-20 px-6 md:pl-[20rem] md:pr-12 min-h-screen">
+<div class="max-w-4xl mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-8 text-on-surface-variant font-label-mono text-label-mono uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Gallery</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-bold">Create New Item</span>
+</nav>
+<!-- Header Section -->
+<div class="mb-12">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Create Gallery Item</h2>
+<p class="text-on-surface-variant">Curate and deploy new visual assets to the Aether ecosystem's public and internal portals.</p>
+</div>
+<!-- Main Form Card -->
+<form class="glass-card rounded-3xl p-8 md:p-12 space-y-10 relative overflow-hidden" id="galleryForm">
+<!-- Background Accent Glows -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/5 rounded-full blur-[80px]"></div>
+<!-- Section 1: Basic Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Item Title</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 transition-all outline-none" placeholder="Enter asset name..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Category</label>
+<select class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 transition-all outline-none appearance-none">
+<option>Projects</option>
+<option>Events</option>
+<option>Office Life</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<!-- Section 2: Media Type Toggle -->
+<div class="space-y-4">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Media Type</label>
+<div class="flex p-1 bg-surface-container-lowest rounded-2xl w-fit border border-white/5">
+<button class="flex items-center gap-2 px-8 py-2.5 rounded-xl transition-all duration-300 font-medium bg-primary-container text-on-primary-container shadow-lg" id="btnImage" onclick="toggleMediaType('image')" type="button">
+<span class="material-symbols-outlined text-sm">image</span>
+                            Image
+                        </button>
+<button class="flex items-center gap-2 px-8 py-2.5 rounded-xl transition-all duration-300 font-medium text-on-surface-variant hover:text-on-surface" id="btnVideo" onclick="toggleMediaType('video')" type="button">
+<span class="material-symbols-outlined text-sm">videocam</span>
+                            Video
+                        </button>
+</div>
+</div>
+<!-- Section 3: Dynamic Inputs -->
+<div class="space-y-8 animate-in fade-in duration-500">
+<!-- Image Upload (Visible by default) -->
+<div class="space-y-4" id="imageInputSection">
+<div class="border-2 border-dashed border-white/10 rounded-3xl p-12 flex flex-col items-center justify-center gap-4 bg-surface-container-lowest/30 hover:bg-surface-container-lowest/50 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-on-surface font-medium">Click to upload or drag and drop</p>
+<p class="text-label-mono text-label-mono text-on-surface-variant mt-1">PNG, JPG or WebP (Max. 20MB)</p>
+</div>
+</div>
+</div>
+<!-- Video Controls (Hidden by default) -->
+<div class="hidden space-y-8" id="videoInputSection">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Video Source</label>
+<select class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 transition-all outline-none appearance-none" onchange="toggleVideoSource(this.value)">
+<option value="upload">Direct Upload</option>
+<option value="url">YouTube URL</option>
+</select>
+</div>
+<div class="space-y-2">
+<div class="flex flex-col gap-2" id="videoUpload">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Select File</label>
+<div class="flex items-center gap-4 bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2">
+<button class="bg-surface-container-high px-4 py-1.5 rounded-lg text-label-mono text-label-mono text-on-surface hover:bg-surface-variant transition-colors" type="button">Browse</button>
+<span class="text-on-surface-variant text-sm italic">No file selected</span>
+</div>
+</div>
+<div class="hidden space-y-2" id="videoUrl">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Embed URL</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 transition-all outline-none" placeholder="https://youtube.com/watch?v=..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Metadata -->
+<div class="space-y-8 border-t border-white/5 pt-8">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-primary uppercase tracking-widest ml-1">Tags</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 transition-all outline-none pr-12" placeholder="Add tags, separated by commas (e.g. AI, Robotic, Design)..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant">label</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest/50 p-4 rounded-2xl border border-white/5 w-fit">
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="isFeatured" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<label class="font-medium text-on-surface" for="isFeatured">Mark as Featured Content</label>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-end gap-4 pt-4">
+<button class="w-full sm:w-auto px-8 py-3 text-on-surface-variant font-medium hover:text-on-surface transition-colors" type="button">Cancel</button>
+<button class="w-full sm:w-auto px-12 py-3 rounded-xl btn-gradient text-white font-bold primary-glow hover:brightness-110 active:scale-[0.98] transition-all" type="submit">
+                        Deploy Asset
+                    </button>
+</div>
+</form>
+<!-- Preview Card (Bento Style) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-card rounded-3xl p-6 overflow-hidden min-h-[300px] flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-label-mono font-label-mono uppercase tracking-widest">Live Preview</span>
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/50"></div>
+<div class="w-3 h-3 rounded-full bg-primary/50"></div>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center flex-1 py-8">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75 group-hover:scale-100 transition-transform"></div>
+<img alt="Preview Placeholder" class="relative w-64 h-64 object-cover rounded-2xl border border-white/10 shadow-2xl" data-alt="A futuristic, hyper-modern abstract 3D render of flowing liquid metal ribbons and geometric crystals. The scene is illuminated by neon violet and cyan lighting, creating a high-contrast cinematic atmosphere against a deep space-black background. The visual represents the fluid power of advanced artificial intelligence, with crisp details and a glassy, glossy texture consistent with a high-end enterprise design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE-9g8ZGf8rjMNBHGtBuCpU9g2hYqB130XUn5dLcUwfE6Sp-iwt_uTAiqxp2iiTbjbT5LuOAcgJ_8XEdE7OcbLptHqSeh8V4f6LSIDnFWAVehrrZmHjYeEy_odoan2wma-1sTokMdYPfEiZg44moseBPeDc9hLz6xKqcMiwy51j4FMYzL9A5q0zniZAcFO3JrF2q6xD2BW113-lRjJtf8Kb70fZzYzTs8yAfXsaTzHxcFezogCM3JFkLWFjqcVt9yOb6w8ND6Nvsc0"/>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5">
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase mb-1">Asset Status</p>
+<p class="text-on-surface font-medium italic">"Awaiting asset synchronization..."</p>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-6 flex flex-col gap-6">
+<h4 class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Metadata Summary</h4>
+<div class="space-y-4">
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-white/5">
+<p class="text-xs text-on-surface-variant font-label-mono uppercase">Resolution</p>
+<p class="text-on-surface font-medium">Auto-Optimized</p>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-white/5">
+<p class="text-xs text-on-surface-variant font-label-mono uppercase">Distribution</p>
+<p class="text-on-surface font-medium">Global Edge CDN</p>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-white/5">
+<p class="text-xs text-on-surface-variant font-label-mono uppercase">Accessibility</p>
+<p class="text-on-surface font-medium">WCAG 2.1 Compliant</p>
+</div>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-on-surface-variant leading-relaxed">System logs indicate that assets uploaded here will be available to all Aether AI endpoints within 60 seconds of deployment.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleMediaType(type) {
+            const btnImage = document.getElementById('btnImage');
+            const btnVideo = document.getElementById('btnVideo');
+            const imageSection = document.getElementById('imageInputSection');
+            const videoSection = document.getElementById('videoInputSection');
+
+            if (type === 'image') {
+                btnImage.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+                btnImage.classList.remove('text-on-surface-variant');
+                btnVideo.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+                btnVideo.classList.add('text-on-surface-variant');
+                
+                imageSection.classList.remove('hidden');
+                videoSection.classList.add('hidden');
+            } else {
+                btnVideo.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+                btnVideo.classList.remove('text-on-surface-variant');
+                btnImage.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+                btnImage.classList.add('text-on-surface-variant');
+                
+                videoSection.classList.remove('hidden');
+                imageSection.classList.add('hidden');
+            }
+        }
+
+        function toggleVideoSource(source) {
+            const upload = document.getElementById('videoUpload');
+            const url = document.getElementById('videoUrl');
+
+            if (source === 'upload') {
+                upload.classList.remove('hidden');
+                url.classList.add('hidden');
+            } else {
+                upload.classList.add('hidden');
+                url.classList.remove('hidden');
+            }
+        }
+
+        // Form submission prevention for demo
+        document.getElementById('galleryForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Deployment sequence initiated. Asset is being synchronized across the Aether AI network.');
+        });
+    </script>
+</body></html>

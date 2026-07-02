@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Service | Aether AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#7c3aed",
+                        "on-primary": "#3f008e",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffafd3",
+                        "on-primary-fixed": "#25005a",
+                        "surface-container-low": "#131b2e",
+                        "surface-tint": "#d2bbff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "background": "#0b1326",
+                        "surface-container": "#171f33",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dae2fd",
+                        "on-tertiary-container": "#ffdce9",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#620040",
+                        "on-primary-container": "#ede0ff",
+                        "surface-bright": "#31394d",
+                        "on-error": "#690005",
+                        "outline-variant": "#4a4455",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "on-secondary-container": "#00424e",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-primary": "#732ee4",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary-fixed": "#3d0026",
+                        "primary-fixed": "#eaddff",
+                        "primary": "#d2bbff",
+                        "on-secondary": "#003640",
+                        "tertiary-fixed": "#ffd8e7",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0b1326",
+                        "outline": "#958da1",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-container": "#ae397b",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "body-base": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #03b5d3 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gradient-btn:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+            transform: translateY(-1px);
+        }
+        .input-focus:focus {
+            border-color: #d2bbff;
+            outline: none;
+            box-shadow: 0 0 0 1px #d2bbff;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base overflow-x-hidden">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl z-50 flex py-base hidden md:flex">
+<div class="px-gutter mb-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary leading-none">Aether AI</h1>
+<p class="text-xs text-on-surface-variant/60 font-label-mono tracking-wider">Enterprise Suite</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 custom-scrollbar overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">mail</span> Inquiries
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">event</span> Events
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">article</span> Blogs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">folder_copy</span> Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">photo_library</span> Gallery
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">rate_review</span> Feedback
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">monitor_heart</span> Health
+            </a>
+</nav>
+<div class="px-4 mt-auto pt-6 border-t border-white/5 space-y-1">
+<button class="w-full flex items-center justify-center gap-2 mb-6 gradient-btn text-white py-3 rounded-xl font-bold active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span> New Analysis
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high hover:text-primary transition-all duration-200 text-on-surface-variant font-medium" href="#">
+<span class="material-symbols-outlined">help_outline</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-18rem)] z-40 bg-surface/40 backdrop-blur-2xl border-b border-white/10 h-16 flex items-center justify-between px-gutter shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+<input class="w-full bg-surface-container/50 border-none rounded-full pl-10 pr-4 py-2 font-label-mono text-label-mono focus:ring-2 focus:ring-primary/50 text-on-surface" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface leading-none">Admin User</p>
+<p class="text-[10px] text-primary uppercase tracking-tighter">System Root</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" data-alt="A professional portrait of a modern software administrator with a neutral expression, set against a blurred background of a high-tech server room with glowing blue and violet lights. The aesthetic is clean, cinematic, and professional, reflecting a high-end AI enterprise environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG3rCjY382zLQA5rtlUBXqEEmmPUz_nDv-f0Mf5VQT9khADCkfZPgjvzq8ZKuZ5BPaBftrTuHjbs3QtlrAv1Y8WbOVPNARjSrZKQ5N5FfT45JX9EckcQzr3LmiDgS42ka6qCqJcI-m5XEY7v894ln3f0ffOePRFtNPd71Y5Va3N1fZKLIPFrFmtDJqae4imAXrmfo8C2SL0ay9bdZI4H8uh5pz5HBMm3zK5W_EihavLoVwMnqamnvhfwdQbozK9oKkhwbtDrHgge1z"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-24 pb-20 px-gutter max-w-5xl mx-auto">
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs font-label-mono text-on-surface-variant/60 mb-2 uppercase tracking-widest">
+<span>Services</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary">Create New</span>
+</nav>
+<h2 class="font-headline-md text-headline-md font-bold text-on-background">Configure New Service</h2>
+<p class="text-on-surface-variant mt-2 max-w-xl">Deploy a new AI-driven module to the Aether ecosystem. Define its capabilities, visibility, and operational features.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-bold hover:bg-surface-container-high transition-all">Discard</button>
+<button class="px-6 py-2 rounded-lg gradient-btn text-white font-bold">Publish Service</button>
+</div>
+</div>
+<!-- Form Layout: Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Primary Settings -->
+<div class="lg:col-span-2 space-y-6">
+<div class="glass-panel p-8 rounded-xl bg-surface-container-low">
+<h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings_suggest</span>
+                            General Information
+                        </h3>
+<div class="space-y-6">
+<div class="group">
+<label class="block text-xs font-label-mono text-on-surface-variant uppercase tracking-widest mb-2 group-focus-within:text-primary transition-colors">Service Title</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus transition-all placeholder:text-on-surface-variant/30" placeholder="e.g. Quantum Neural Processor" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="group">
+<label class="block text-xs font-label-mono text-on-surface-variant uppercase tracking-widest mb-2 group-focus-within:text-primary transition-colors">Material Icon Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 pl-11 text-on-surface input-focus transition-all placeholder:text-on-surface-variant/30" placeholder="e.g. memory" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/60">category</span>
+</div>
+<p class="text-[10px] text-on-surface-variant/50 mt-1 italic">Reference Material Symbols library for names.</p>
+</div>
+<div class="group">
+<label class="block text-xs font-label-mono text-on-surface-variant uppercase tracking-widest mb-2 group-focus-within:text-primary transition-colors">Status</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus transition-all appearance-none">
+<option value="active">Active</option>
+<option value="inactive">Inactive</option>
+<option value="maintenance">Maintenance</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl bg-surface-container-low">
+<h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                            Service Description
+                        </h3>
+<!-- Quill-like Rich Text Mockup -->
+<div class="border border-outline-variant rounded-lg overflow-hidden bg-surface-container-lowest">
+<div class="flex items-center gap-2 px-3 py-2 border-b border-outline-variant bg-surface-container-high/50">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">format_bold</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">format_italic</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">format_underlined</span></button>
+<div class="w-[1px] h-4 bg-outline-variant"></div>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">format_list_bulleted</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">format_list_numbered</span></button>
+<div class="w-[1px] h-4 bg-outline-variant"></div>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant ml-auto"><span class="material-symbols-outlined text-sm">link</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">image</span></button>
+</div>
+<textarea class="w-full min-h-[250px] bg-transparent border-none p-6 text-on-surface focus:ring-0 placeholder:text-on-surface-variant/30 resize-none" placeholder="Describe the service architecture and value proposition..."></textarea>
+</div>
+</div>
+</div>
+<!-- Sidebar Settings -->
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-xl bg-surface-container-low">
+<h3 class="font-bold text-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">verified</span>
+                            Core Features
+                        </h3>
+<p class="text-xs text-on-surface-variant mb-4">Add the primary features, one per line.</p>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus transition-all placeholder:text-on-surface-variant/30 font-label-mono text-xs" placeholder="Auto-scaling clusters
+Zero-latency relay
+Edge processing" rows="8"></textarea>
+</div>
+<!-- Visual Preview Mockup -->
+<div class="glass-panel p-6 rounded-xl bg-surface-container-low overflow-hidden relative group">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<h3 class="font-bold text-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-base">visibility</span>
+                            Live Preview
+                        </h3>
+<div class="bg-surface-container-lowest rounded-lg border border-white/5 p-4 relative z-10">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg">rocket_launch</span>
+</div>
+<div class="h-4 w-24 bg-surface-variant rounded animate-pulse"></div>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-surface-variant/40 rounded"></div>
+<div class="h-2 w-4/5 bg-surface-variant/40 rounded"></div>
+<div class="h-2 w-2/3 bg-surface-variant/40 rounded"></div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5 flex gap-2">
+<div class="h-5 w-12 bg-secondary/10 border border-secondary/20 rounded-full"></div>
+<div class="h-5 w-16 bg-secondary/10 border border-secondary/20 rounded-full"></div>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant/40 text-center mt-4 uppercase tracking-widest">Card preview layout</p>
+</div>
+<!-- Deployment Meta -->
+<div class="glass-panel p-6 rounded-xl bg-surface-container-low">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-md">Deployment</h3>
+<span class="px-2 py-0.5 rounded bg-error/10 border border-error/20 text-error text-[10px] font-label-mono uppercase">Draft</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Created by</span>
+<span class="text-on-surface font-medium">Admin_Alpha</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Last saved</span>
+<span class="text-on-surface font-medium">Just now</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Version</span>
+<span class="text-on-surface font-medium">v1.0.4-dev</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Action Footer (Mobile Only or Floating) -->
+<div class="fixed bottom-6 right-6 md:hidden">
+<button class="w-14 h-14 rounded-full gradient-btn text-white shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined">save</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for the inputs
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Dynamic gradient movement for atmospheric effect
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Subtle glow follow
+            const glow = document.createElement('div');
+            glow.className = 'fixed w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-[-1]';
+            glow.style.left = (e.clientX - 200) + 'px';
+            glow.style.top = (e.clientY - 200) + 'px';
+            
+            // Optimization: Remove old glows if any
+            const existingGlow = document.querySelector('.dynamic-glow');
+            if (existingGlow) existingGlow.remove();
+            glow.classList.add('dynamic-glow');
+            document.body.appendChild(glow);
+        });
+    </script>
+</body></html>

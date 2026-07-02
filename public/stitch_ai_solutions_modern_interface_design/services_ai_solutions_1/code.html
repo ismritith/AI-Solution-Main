@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services | AI-Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .accent-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+    </style>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#dae2fd",
+                        "tertiary": "#ffafd3",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-bright": "#31394d",
+                        "on-secondary": "#003640",
+                        "surface-variant": "#2d3449",
+                        "tertiary-container": "#ae397b",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "outline-variant": "#4a4455",
+                        "tertiary-fixed": "#ffd8e7",
+                        "background": "#0b1326",
+                        "surface-container-low": "#131b2e",
+                        "on-primary": "#3f008e",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "on-tertiary": "#620040",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "on-primary-container": "#ede0ff",
+                        "on-tertiary-container": "#ffdce9",
+                        "secondary-fixed": "#acedff",
+                        "inverse-on-surface": "#283044",
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-container": "#00424e",
+                        "secondary": "#4cd7f6",
+                        "outline": "#958da1",
+                        "on-surface-variant": "#ccc3d8",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#eaddff",
+                        "primary": "#d2bbff",
+                        "on-tertiary-fixed": "#3d0026",
+                        "inverse-primary": "#732ee4",
+                        "surface-tint": "#d2bbff",
+                        "primary-container": "#7c3aed",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary-fixed": "#001f26",
+                        "secondary-container": "#03b5d3",
+                        "inverse-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#d2bbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "section-gap": "120px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="font-body-base text-body-base selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter" href="#">AI-Solutions</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Gallery</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Insights</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 rounded-lg text-primary hover:bg-primary/10 transition-all font-medium">Book Now</button>
+<button class="px-6 py-2 rounded-lg gradient-button text-white font-bold transition-transform scale-100 active:scale-95 duration-200 shadow-lg shadow-primary/20">Get Started</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Atmospheric Glows -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[800px] radial-glow -z-10 opacity-60"></div>
+<div class="absolute top-[1200px] right-0 w-[600px] h-[600px] radial-glow -z-10 opacity-30" style="--glow-color: #4cd7f633"></div>
+<!-- Hero Section -->
+<section class="pt-40 pb-24 px-gutter max-w-container-max mx-auto text-center relative">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-8">
+<span class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Next-Gen Intelligence</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold mb-6 tracking-tighter leading-tight">
+                Intelligence that scales <br/>
+<span class="gradient-text">with your ambition</span>
+</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant text-lg mb-12">
+                Deploy modular AI architecture designed for the high-performance enterprise. From autonomous operations to predictive data engines, we provide the infrastructure for your digital evolution.
+            </p>
+<div class="relative mx-auto max-w-4xl mt-12 group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+<div class="relative glass-card rounded-2xl overflow-hidden aspect-video shadow-2xl">
+<img alt="AI Visualization" class="w-full h-full object-cover grayscale opacity-50 transition duration-700 group-hover:grayscale-0 group-hover:opacity-100" data-alt="A sophisticated, high-tech interface displaying 3D neural network visualizations with glowing nodes and cyan connection lines. The environment is dark and cinematic, suggesting a high-performance server room or a digital command center. The lighting is dominated by soft purple and vibrant blue glows, matching a futuristic cyber-intelligence aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW-9uvCzsVQ7isuv4oQBEdCZ25NChMk5i7x-EOP2G_q2upi1klMUE_efDJy_KTeIoMrt8vYMaduTGvYfu81HGvDhbdl-Ri6wyZ7fjykYi6l5-ZAiOH_Hd3bPC-n5Pn9rcAOGjrTPRBWL8iE6t0yXHM79aiTArsL87uGf1mj23l7d6PuVwIZMECRRVaSvbKyDo8yln-D5G4-OTZkUyRQtnJVKr4oiMcq00niShzGF2WM5_7YbGj0Tq7nUaF8zz_UQz4Ovz96ignLIIR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 text-left">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-mono text-label-mono text-white/70">SYSTEM_STATUS: OPTIMAL</span>
+</div>
+<div class="w-64 h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-secondary animate-[pulse_2s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Services Grid (Bento) -->
+<section class="py-section-gap px-gutter max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline-md text-headline-md font-bold mb-4">The Modular Core</h2>
+<p class="text-on-surface-variant">Three pillars of enterprise intelligence, interconnected through our proprietary neural bridge.</p>
+</div>
+<div class="flex gap-4">
+<div class="p-4 rounded-xl glass-card text-primary font-label-mono text-label-mono flex flex-col items-center">
+<span class="text-2xl font-bold">99.9%</span>
+<span class="opacity-60">UPTIME</span>
+</div>
+<div class="p-4 rounded-xl glass-card text-secondary font-label-mono text-label-mono flex flex-col items-center">
+<span class="text-2xl font-bold">12ms</span>
+<span class="opacity-60">LATENCY</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Business Analytics -->
+<div class="md:col-span-7 glass-card rounded-3xl p-10 group hover:border-primary/40 transition-all duration-300 flex flex-col justify-between overflow-hidden relative">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-150"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">insights</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-4">Business Analytics</h3>
+<p class="text-on-surface-variant text-lg mb-8 max-w-md">
+                            Harness predictive engines to decode complex market shifts. Our real-time dashboards provide a crystalline view of your data strategy and operational health.
+                        </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Predictive Market Modeling
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Real-time Latency Dashboards
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Anomaly Detection &amp; Response
+                            </li>
+</ul>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                        View Strategy <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Autonomous Agents -->
+<div class="md:col-span-5 glass-card rounded-3xl p-10 group hover:border-secondary/40 transition-all duration-300 flex flex-col justify-between overflow-hidden relative">
+<div class="absolute -left-20 -bottom-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-150"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-4">Autonomous Agents</h3>
+<p class="text-on-surface-variant mb-6">Self-learning operations that integrate across your multi-tool ecosystem without human intervention.</p>
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl border border-white/5 font-label-mono text-label-mono text-secondary mb-8">
+<div class="flex justify-between items-center mb-2">
+<span>AGENT_ID: 001_SIGMA</span>
+<span class="text-[10px] bg-secondary/20 px-2 py-0.5 rounded">ACTIVE</span>
+</div>
+<div class="text-[10px] text-white/40">EXECUTING: OPTIMIZE_NODE_04</div>
+</div>
+</div>
+<button class="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all">
+                        Configure Agents <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Heavy Automation -->
+<div class="md:col-span-12 glass-card rounded-3xl p-10 md:p-12 group hover:border-tertiary/40 transition-all duration-300 relative overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">automation</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-4">Heavy Automation</h3>
+<p class="text-on-surface-variant text-lg mb-8">
+                                Transform fragmented legacy scripts into fluid, AI-driven workflows. Our orchestration layer replaces fragile human-dependent processes with resilient machine logic.
+                            </p>
+<div class="flex flex-wrap gap-4">
+<span class="px-4 py-2 bg-surface-container rounded-lg border border-white/5 text-sm font-label-mono">LEGACY_MIGRATION</span>
+<span class="px-4 py-2 bg-surface-container rounded-lg border border-white/5 text-sm font-label-mono">PIPELINE_ORCHESTRATION</span>
+<span class="px-4 py-2 bg-surface-container rounded-lg border border-white/5 text-sm font-label-mono">ERROR_SELF_HEAL</span>
+</div>
+</div>
+<div class="relative">
+<img alt="Automation Logic" class="rounded-2xl border border-white/10 shadow-2xl shadow-tertiary/10" data-alt="Close-up macro shot of a sleek motherboard circuit with glowing light trails moving through gold and silver paths. The image has a deep tech feel with a cool blue and neon magenta color scheme. High contrast, sharp focus on the central processor unit which emits a soft, ethereal glow indicating active data processing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1u__sV8ToXEFeu6u0M5IXmkz6unXbNRI6stLI6o79RDH5HtkjOrIg7qqs4cEzmSk-bti8hSZT0tpoDLALECCOVCRWGvjIzWg0vuga-nIZ5C4pqWYuLlG67fD-nes2K1FngbBwyE1-d89ERYTPyO6jCAl0pM_cg1EQ2ykU75vgYXscw0oJeodbSdBNtsmGk-JmadbnHI1Ly_u-tM-cYFXfS4OHxoDRZzky1d85vujL8Ztl4O0g5mmOdW2HQs--vWDf7NYOmb6NAFs"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Tiers -->
+<section class="py-section-gap px-gutter bg-surface-container-lowest/50 relative">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md font-bold mb-4">Intelligence Packages</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Select the operational scale that aligns with your enterprise objectives.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Core -->
+<div class="glass-card p-8 rounded-3xl flex flex-col">
+<div class="mb-8">
+<span class="font-label-mono text-label-mono text-white/40 block mb-2">ENTRY LAYER</span>
+<h4 class="text-2xl font-bold mb-4">Core</h4>
+<div class="text-3xl font-bold mb-6">$2,500 <span class="text-sm font-normal text-white/40">/mo</span></div>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">bolt</span>
+                                5 Autonomous Agents
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">bolt</span>
+                                Standard API Access
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">bolt</span>
+                                Weekly Analytics Reports
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-white/20 hover:bg-white/5 transition-all font-bold">Select Core</button>
+</div>
+<!-- Scale -->
+<div class="glass-card p-8 rounded-3xl flex flex-col relative scale-105 border-primary/50 shadow-2xl shadow-primary/10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full">MOST POPULAR</div>
+<div class="mb-8">
+<span class="font-label-mono text-label-mono text-primary block mb-2">MID LAYER</span>
+<h4 class="text-2xl font-bold mb-4">Scale</h4>
+<div class="text-3xl font-bold mb-6">$8,900 <span class="text-sm font-normal text-white/40">/mo</span></div>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+                                Unlimited Agents
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+                                Priority API Access
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+                                Custom Neural Models
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+                                24/7 Priority Support
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-xl gradient-button text-white font-bold shadow-lg shadow-primary/20">Select Scale</button>
+</div>
+<!-- Enterprise -->
+<div class="glass-card p-8 rounded-3xl flex flex-col">
+<div class="mb-8">
+<span class="font-label-mono text-label-mono text-white/40 block mb-2">TOP LAYER</span>
+<h4 class="text-2xl font-bold mb-4">Enterprise</h4>
+<div class="text-3xl font-bold mb-6">Custom <span class="text-sm font-normal text-white/40">Pricing</span></div>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">hub</span>
+                                On-Premise Deployment
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">hub</span>
+                                Dedicated Engineering Team
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base">hub</span>
+                                Compliance &amp; Security Shield
+                            </li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-white/20 hover:bg-white/5 transition-all font-bold">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Integration Process -->
+<section class="py-section-gap px-gutter max-w-container-max mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md font-bold mb-4">The Integration Journey</h2>
+<p class="text-on-surface-variant">Rapid deployment without operational friction.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 relative">
+<!-- Connective Line (Desktop Only) -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent -z-10"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl group hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary mb-6 border border-primary/30">1</div>
+<h5 class="font-bold mb-2">Audit</h5>
+<p class="text-sm text-on-surface-variant">Mapping existing bottlenecks and data flows.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl group hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-bold text-secondary mb-6 border border-secondary/30">2</div>
+<h5 class="font-bold mb-2">Design</h5>
+<p class="text-sm text-on-surface-variant">Tailoring neural architectures to your needs.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl group hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-bold text-tertiary mb-6 border border-tertiary/30">3</div>
+<h5 class="font-bold mb-2">Deploy</h5>
+<p class="text-sm text-on-surface-variant">Seamless integration with zero downtime.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl group hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-bold text-white mb-6 border border-white/30">4</div>
+<h5 class="font-bold mb-2">Evolve</h5>
+<p class="text-sm text-on-surface-variant">Continuous learning and performance tuning.</p>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-section-gap px-gutter text-center relative overflow-hidden">
+<div class="absolute inset-0 radial-glow opacity-40 -z-10"></div>
+<div class="max-w-3xl mx-auto">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold mb-8 tracking-tighter">Ready for take-off?</h2>
+<p class="text-on-surface-variant text-xl mb-12">Empower your team with advanced intelligence and focus on what truly matters: your vision.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-10 py-4 rounded-xl gradient-button text-white font-bold text-lg transition-all hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]">Book a Strategy Session</button>
+<button class="px-10 py-4 rounded-xl bg-surface-container border border-white/10 hover:border-white/30 transition-all font-bold text-lg">Explore the API</button>
+</div>
+<div class="mt-16 flex items-center justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all">
+<span class="material-symbols-outlined text-4xl">cloud_queue</span>
+<span class="material-symbols-outlined text-4xl">security</span>
+<span class="material-symbols-outlined text-4xl">database</span>
+<span class="material-symbols-outlined text-4xl">api</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-lowest border-t border-outline-variant mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-gutter py-section-gap">
+<div class="md:col-span-1">
+<a class="font-headline-md text-headline-md font-black text-on-surface block mb-6" href="#">AI-Solutions</a>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                    © 2024 AI-Solutions. Empowering the future through advanced intelligence.
+                </p>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-on-surface">Platform</h6>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">API Documentation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-on-surface">Company</h6>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-on-surface">Connect</h6>
+<div class="flex gap-4 mb-8">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">alternate_email</span>
+</a>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container rounded-lg border-white/5 text-sm focus:ring-primary focus:border-primary px-4 py-2" placeholder="Join our newsletter" type="email"/>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll and micro-interactions
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple parallax effect for cards on hover
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

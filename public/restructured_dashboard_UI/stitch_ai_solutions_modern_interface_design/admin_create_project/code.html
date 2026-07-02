@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Project | Aether AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .accent-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(210, 187, 255, 0.15) 0%, rgba(210, 187, 255, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2bbff !important;
+            box-shadow: 0 0 0 2px rgba(210, 187, 255, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#85145a",
+                      "error": "#ffb4ab",
+                      "primary-container": "#7c3aed",
+                      "on-primary": "#3f008e",
+                      "error-container": "#93000a",
+                      "tertiary": "#ffafd3",
+                      "on-primary-fixed": "#25005a",
+                      "surface-container-low": "#131b2e",
+                      "surface-tint": "#d2bbff",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "inverse-surface": "#dae2fd",
+                      "inverse-on-surface": "#283044",
+                      "background": "#0b1326",
+                      "surface-container": "#171f33",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dae2fd",
+                      "on-tertiary-container": "#ffdce9",
+                      "secondary-fixed": "#acedff",
+                      "surface-container-high": "#222a3d",
+                      "on-secondary-fixed": "#001f26",
+                      "primary-fixed-dim": "#d2bbff",
+                      "surface-container-lowest": "#060e20",
+                      "on-tertiary": "#620040",
+                      "on-primary-container": "#ede0ff",
+                      "surface-bright": "#31394d",
+                      "on-error": "#690005",
+                      "outline-variant": "#4a4455",
+                      "surface-variant": "#2d3449",
+                      "surface": "#0b1326",
+                      "on-secondary-container": "#00424e",
+                      "tertiary-fixed-dim": "#ffafd3",
+                      "on-surface-variant": "#ccc3d8",
+                      "inverse-primary": "#732ee4",
+                      "secondary": "#4cd7f6",
+                      "on-tertiary-fixed": "#3d0026",
+                      "primary-fixed": "#eaddff",
+                      "primary": "#d2bbff",
+                      "on-secondary": "#003640",
+                      "tertiary-fixed": "#ffd8e7",
+                      "on-surface": "#dae2fd",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-dim": "#0b1326",
+                      "outline": "#958da1",
+                      "surface-container-highest": "#2d3449",
+                      "tertiary-container": "#ae397b",
+                      "secondary-container": "#03b5d3",
+                      "on-primary-fixed-variant": "#5a00c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Geist"],
+                      "body-base": ["Inter"],
+                      "label-mono": ["JetBrains Mono"],
+                      "display-lg-mobile": ["Geist"],
+                      "display-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low/50 backdrop-blur-3xl border-r border-white/10 shadow-2xl flex flex-col py-base z-[60]">
+<div class="px-gutter mb-12">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Aether AI</h1>
+<p class="text-on-surface-variant font-label-mono text-xs opacity-70">Enterprise Suite</p>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">mail</span> Inquiries
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">event</span> Events
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">article</span> Blogs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-primary/10 transition-all duration-200 rounded-l-xl group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_copy</span> Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">photo_library</span> Gallery
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">rate_review</span> Feedback
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-primary transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">monitor_heart</span> Health
+            </a>
+</nav>
+<div class="px-4 py-6 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant font-medium hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant font-medium hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help_outline</span> Support
+            </a>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-50 bg-surface/40 backdrop-blur-2xl border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Aether Dash</span>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-high/50 border-none rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search systems..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-primary/30 ml-2">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a tech executive in a dark environment, illuminated by soft blue and violet ambient light from multiple screens. The style is modern, cinematic, and high-fidelity, matching a professional AI enterprise aesthetic with sharp focus and shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_LwMqHDCIhxNDvQCeC63xnWuWESNNOx9F06X-y-wxLCXioq3pLt462HFS0JVCjUfaa-suGNlWf2tu4m89gN6Ptdaxr_bDwsrLu4WXrD4mLUahRezT8W_twVwjJkPOFxF2MYVtMrL5icnplDKd1RNfyLyA1CcOCQuu6O-Zm4VAq28KY5A_abfNeeZBTIrsHiFSyqJKzjU14Xnl4ZqUAsF-Crg7NT7U26sWC2dDHtqUA2UagsHj21QOJI1PHqBT_vL0SRxEsTG8yLh3"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 pt-24 pb-20 px-gutter">
+<div class="max-w-container-max mx-auto">
+<header class="mb-12 flex justify-between items-end">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-label-mono font-label-mono uppercase tracking-widest">Project Studio</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Initiate New Project</h2>
+<p class="text-on-surface-variant max-w-2xl mt-2">Configure the core parameters and technical specifications for the upcoming intelligence solution deployment.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-white/10 rounded-xl text-on-surface hover:bg-white/5 transition-all">Save Draft</button>
+<button class="px-6 py-3 bg-gradient-to-r from-primary-container to-secondary-container rounded-xl text-on-primary font-bold shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-[1.02] active:scale-95 transition-all">Deploy Project</button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-8">
+<!-- Section 1: Overview -->
+<section class="col-span-12 lg:col-span-8 space-y-8">
+<div class="glass-card rounded-2xl p-8 relative overflow-hidden">
+<div class="accent-glow -top-20 -right-20 opacity-30"></div>
+<h3 class="font-headline-md text-2xl text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">dashboard</span> Overview
+                        </h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Project Title</label>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="e.g. Project Aether Genesis" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Type</label>
+<select class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface">
+<option>Case Study</option>
+<option>Research</option>
+<option>Product</option>
+<option>Consulting</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Status</label>
+<select class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface">
+<option>In Progress</option>
+<option>Active</option>
+<option>Completed</option>
+</select>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Subtitle</label>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="Brief technical summary line" type="text"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Tags</label>
+<div class="flex flex-wrap gap-2 mb-2" id="tag-container">
+<span class="px-3 py-1 bg-primary/10 border border-primary/30 text-primary rounded-full text-xs flex items-center gap-2">Machine Learning <span class="material-symbols-outlined text-xs cursor-pointer">close</span></span>
+<span class="px-3 py-1 bg-secondary/10 border border-secondary/30 text-secondary rounded-full text-xs flex items-center gap-2">Big Data <span class="material-symbols-outlined text-xs cursor-pointer">close</span></span>
+</div>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="Add tags..." type="text"/>
+</div>
+<div class="col-span-2 flex items-center gap-3 py-4">
+<input class="w-5 h-5 rounded border-white/10 bg-surface-container-highest text-primary-container focus:ring-primary focus:ring-offset-0" id="featured" type="checkbox"/>
+<label class="text-on-surface font-medium" for="featured">Mark as Featured Project</label>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Short Description</label>
+<textarea class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface resize-none" placeholder="High-level executive summary..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Section 2: Details -->
+<div class="glass-card rounded-2xl p-8">
+<h3 class="font-headline-md text-2xl text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">tune</span> Detailed Configuration
+                        </h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Client Identity</label>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="Partner/Client Name" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Project Duration</label>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="e.g. 6 Months (Q3-Q4)" type="text"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Tech Stack</label>
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-xl px-4 py-3 text-on-surface" placeholder="React, Python, PyTorch, AWS, etc." type="text"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Comprehensive Overview</label>
+<div class="bg-surface-container-highest/50 border border-white/5 rounded-xl overflow-hidden">
+<div class="flex items-center gap-4 px-4 py-2 border-b border-white/5 bg-white/5">
+<button class="p-1 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">format_bold</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">format_italic</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">list</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">link</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-sm">code</span></button>
+</div>
+<textarea class="w-full bg-transparent border-none px-4 py-3 text-on-surface resize-none focus:ring-0" placeholder="Start typing rich content..." rows="8"></textarea>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Sections -->
+<aside class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Image Upload -->
+<div class="glass-card rounded-2xl p-6 border-dashed border-2 border-white/10 hover:border-primary/50 transition-colors cursor-pointer group">
+<label class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider mb-4 block">Hero Visual</label>
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container-highest flex flex-col items-center justify-center relative">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors mb-2">add_a_photo</span>
+<p class="text-on-surface-variant text-sm group-hover:text-on-surface">Click to upload featured image</p>
+<p class="text-on-surface-variant/50 text-[10px] mt-1 font-label-mono">1920 x 1080 Recommended</p>
+</div>
+</div>
+<!-- Section 3: Key Results -->
+<div class="glass-card rounded-2xl p-6">
+<h3 class="font-headline-md text-xl text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">insights</span> Key Metrics
+                        </h3>
+<div class="space-y-6">
+<!-- Slot 1 -->
+<div class="p-4 bg-white/5 rounded-xl border border-white/5">
+<div class="grid grid-cols-3 gap-2">
+<div class="col-span-1">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Value</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="85%" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Label</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="Efficiency Gain" type="text"/>
+</div>
+<div class="col-span-3">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Description</label>
+<textarea class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-xs resize-none" placeholder="Measured via automated benchmarking..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Slot 2 -->
+<div class="p-4 bg-white/5 rounded-xl border border-white/5">
+<div class="grid grid-cols-3 gap-2">
+<div class="col-span-1">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Value</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="2.4M" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Label</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="Active Users" type="text"/>
+</div>
+<div class="col-span-3">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Description</label>
+<textarea class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-xs resize-none" placeholder="User growth after v2.0 rollout..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Slot 3 -->
+<div class="p-4 bg-white/5 rounded-xl border border-white/5">
+<div class="grid grid-cols-3 gap-2">
+<div class="col-span-1">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Value</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="&lt;50ms" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Label</label>
+<input class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-sm" placeholder="Latency Reduction" type="text"/>
+</div>
+<div class="col-span-3">
+<label class="text-[10px] font-label-mono text-on-surface-variant uppercase">Description</label>
+<textarea class="w-full bg-surface-container-low border-white/5 rounded-lg px-2 py-1.5 text-on-surface text-xs resize-none" placeholder="Optimization of inference endpoints..." rows="2"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Technical Implementation -->
+<div class="glass-card rounded-2xl p-6">
+<h3 class="font-headline-md text-xl text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">terminal</span> Implementation Steps
+                        </h3>
+<div class="space-y-4">
+<!-- Step 1 -->
+<div class="flex gap-4">
+<div class="flex-none w-8 h-8 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-bold text-sm">1</div>
+<div class="flex-1 space-y-2">
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-sm" placeholder="Phase Title (e.g. Data Integration)" type="text"/>
+<textarea class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-xs resize-none" placeholder="Implementation technical specifics..." rows="2"></textarea>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-4">
+<div class="flex-none w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-on-surface-variant font-bold text-sm">2</div>
+<div class="flex-1 space-y-2">
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-sm" placeholder="Phase Title (e.g. Model Training)" type="text"/>
+<textarea class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-xs resize-none" placeholder="Implementation technical specifics..." rows="2"></textarea>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-4">
+<div class="flex-none w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-on-surface-variant font-bold text-sm">3</div>
+<div class="flex-1 space-y-2">
+<input class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-sm" placeholder="Phase Title (e.g. Deployment)" type="text"/>
+<textarea class="w-full bg-surface-container-highest/50 border-white/5 rounded-lg px-3 py-2 text-on-surface text-xs resize-none" placeholder="Implementation technical specifics..." rows="2"></textarea>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Visual Polish Elements -->
+<div class="fixed top-0 right-0 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none z-0"></div>
+<div class="fixed bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none z-0"></div>
+<script>
+        // Simple Interaction: Button Gaps
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Floating Micro-Animation for Accent Glows
+        const glows = document.querySelectorAll('.accent-glow');
+        let mouseX = 0, mouseY = 0;
+        
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 50;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 50;
+            
+            glows.forEach(glow => {
+                glow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+        });
+    </script>
+</body></html>
